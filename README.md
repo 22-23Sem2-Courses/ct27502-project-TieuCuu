@@ -2,15 +2,12 @@
 
 Học kỳ 2, Năm học 2022-2023
 
-**MSSV 1** : 
+**MSSV 1** : Lý Đại Phát
 
-**Họ tên SV 1**:
+**Họ tên SV 1**: B1705292
 
-**MSSV 2**:
+**Lớp học phần**: Công nghệ Web CT275-02
 
-**Họ tên SV 2**:
+**Tên dự án**: Website thương mại điện tử
 
-**Lớp học phần**:
-
-**Tên dự án**:
 

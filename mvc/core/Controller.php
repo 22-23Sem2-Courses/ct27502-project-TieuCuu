@@ -11,7 +11,7 @@ class Controller //trung gian tương tự bridge, nhiệm vụ gọi model và 
     }
 
     //gọi view tương ứng
-    public function view($view)
+    public function view($view, $data = [])
     {
         if (file_exists("../mvc/views/" . $view . ".php")) {
             require_once "../mvc/views/" . $view . ".php";

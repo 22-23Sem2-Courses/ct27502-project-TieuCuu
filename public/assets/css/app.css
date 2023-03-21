@@ -432,21 +432,21 @@
 }
 
 /* LOGIN */
-.login-sidebar {
+.shared-sidebar {
     height: 100vh !important;
     background-color: var(--blue-green);
     position: relative;
 }
 
-.login-sidebar header {
+.shared-sidebar header {
     padding: 64px 64px 30px;
 }
 
-.login-sidebar header a {
+.shared-sidebar header a {
     opacity: 0.7;
 }
 
-.login-sidebar header h1 {
+.shared-sidebar header h1 {
     font-size: 1.5rem;
     line-height: 1.875rem;
     white-space: nowrap;
@@ -455,7 +455,7 @@
     color: #36454F;
 }
 
-.login-sidebar img {
+.shared-sidebar img {
     position: absolute;
     bottom: 10%;
     left: 15%;
@@ -463,34 +463,34 @@
     object-fit: cover;
 }
 
-.login-form {
+.shared-form {
     width: 100%;
     max-width: 416px;
 }
 
-.login-form h2 {
+.shared-form h2 {
     font-size: 1.5rem;
 }
 
-.login-form form input {
+.shared-form form input {
     background-color: #f3f3f4;
 }
 
-.login-form form input.input-color:focus {
+.shared-form form input.input-color:focus {
     border-color: rgba(130, 167, 157, 0.4);
     background-color: #fff;
     -webkit-box-shadow: 0 0 0 4px rgb(233 245 245);
     box-shadow: 0 0 0 4px rgb(233 245 245);
 }
 
-.login-form form input.input-color:hover {
+.shared-form form input.input-color:hover {
     border-color: rgba(0, 0, 0, 0.1);
     background-color: #fff;
     -webkit-box-shadow: 0 0 0 4px rgb(233 245 245);
     box-shadow: 0 0 0 4px rgb(233 245 245);
 }
 
-.login-form form label.form-check-label {
+.shared-form form label.form-check-label {
     font-size: 0.875rem;
 }
 

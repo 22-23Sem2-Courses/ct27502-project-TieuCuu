@@ -8,11 +8,13 @@ class Home extends Controller
 
     function SayHi()
     {
-        //model
+        //model tương tác db, nhận hoặc gửi data
         //$init = $this->model("ProductModel");
         //echo $init->GetProduct();
-        //view
-        $this->view("master1");
+
+
+        //view, tham số 1 là tên layout, tham số 2 mảng truyền data vào view
+        $this->view("master1", ["page" => "home"]);
     }
 
     function Sum($a, $b)

@@ -20,19 +20,10 @@
 </head>
 
 <body>
-    <header>
-        <?php require_once "../mvc/views/blocks/header.php" ?>
-    </header>
 
-    <main id="master1-container">
+    <main id="master2-container">
         <?php require_once "../mvc/views/pages/" . $data["page"] . ".php" ?>
     </main>
-
-    <footer>
-        <?php require_once "../mvc/views/blocks/footer.php" ?>
-    </footer>
-
-    <script src="./assets/js/index.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <?php
-class Signin extends Controller
+class ForgotPW extends Controller
 {
 
     function __construct()
@@ -8,6 +8,6 @@ class Signin extends Controller
 
     public function SayHi()
     {
-        $this->view("master2", ["page" => "signin"]);
+        $this->view("master2", ["page" => "reset_Password"]);
     }
 }

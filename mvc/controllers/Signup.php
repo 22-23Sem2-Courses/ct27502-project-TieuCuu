@@ -24,22 +24,14 @@ class Signup extends Controller
             $password = password_hash($password, PASSWORD_DEFAULT);
             $password_confirm = $_POST["password_confirm"];
             $terms = $_POST["terms"];
-
-            // echo $firstname;
-            // echo "<br>";
-            // echo $username;
-            // echo "<br>";
-            // echo $email;
-            // echo "<br>";
-            // echo $password;
-            // echo "<br>";
-            // echo $password_confirm;
-            // echo "<br>";
-            // echo $terms;
         }
         //2. insert vào bảng database
-        $kq = $this->UserModel->InsertNewUser($firstname, $username, $email, $password);
-        echo $kq;
+        $result = $this->UserModel->InsertNewUser($firstname, $username, $email, $password);
+
         //3. Show "OK/Fail" ra màn hình
+        $this->view("master2", [
+            "page" => "signup",
+            "result" => $result
+        ]);
     }
 }

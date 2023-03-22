@@ -2,25 +2,37 @@
 
 class UserModel extends ConnectDB
 {
+    public $PDO;
+
     public function __construct()
     {
+        $this->PDO = $this->connect();
     }
+
 
     public function InsertNewUser($firstname, $username, $email, $password)
     {
-        //$qr = "INSERT INTO USERS(UserFirstName, Username, UserEmail, UserPassword) VALUES('$firstname', '$username', '$email', '$password')";
-        //$qr = $this->conn->prepare("INSERT INTO USERS(UserFirstName, Username, UserEmail, UserPassword) VALUES VALUES (?, ?, ?, ?)");
-
-        $PDO = $this->connect();
         $result = false;
         $sql = "INSERT INTO USERS(UserFirstName, Username, UserEmail, UserPassword) VALUES(?, ?, ?, ?)";
-        $stmt = $PDO->prepare($sql);
+        $stmt = $this->PDO->prepare($sql);
         if ($stmt->execute([$firstname, $username, $email, $password])) {
             $result = true;
-            $new_id = $PDO->lastInsertId();
-            echo $new_id;
+            echo $result;
+            $new_id = $this->PDO->lastInsertId();
         };
 
         return json_encode($result);
+    }
+
+    public function checkUsername($username)
+    {
+        $result = false;
+        $sql = "SELECT UserID from Users WHERE Username = ?";
+        $stmt = $this->PDO->prepare($sql);
+        if ($stmt->execute([$username]) && $stmt->rowCount() > 0) {
+            $result = true;
+        };
+
+        return $result;
     }
 }

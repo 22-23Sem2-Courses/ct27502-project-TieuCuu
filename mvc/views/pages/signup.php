@@ -25,7 +25,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="username" class="form-label fw-bold">Username</label>
-                                <input type="text" name="username" class="form-control form-control-lg input-color" required>
+                                <input type="text" name="username" id="username" class="form-control form-control-lg input-color" required>
+                                <div id="messageUn" class="form-text" style="font-size: 0.8rem;"></div>
                             </div>
                             <div class="col-md-12">
                                 <label for="email" class="form-label fw-bold">Email</label>
@@ -68,3 +69,14 @@
     </div>
 </div>
 <script src="./assets/js/signup.js"></script>
+
+<?php if (isset($data["result"])) { ?>
+    <h3><?php
+        if ($data["result"]) {
+            echo "Đăng ký thành công";
+        } else {
+            echo "Đăng ký thất bại";
+        }
+        ?>
+    </h3>
+<?php } ?>

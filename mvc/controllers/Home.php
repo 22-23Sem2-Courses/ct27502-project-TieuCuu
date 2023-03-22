@@ -2,8 +2,11 @@
 class Home extends Controller
 {
 
+    //public $ExampleModel; nếu các function đều cần gọi model thì tạo biến global
+
     function __construct()
     {
+        //$this->ExampleModel = $this->model("ExampleModel");
     }
 
     function SayHi()

@@ -6,7 +6,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-around">
                 <div>
-                    <a class="navbar-brand fs-3 fw-bold" href="#">Dandelion</a>
+                    <a class="navbar-brand fs-3 fw-bold" href="/Home">Dandelion</a>
                 </div>
                 <ul class="navbar-category nav navbar-nav mb-2 mb-lg-0 fw-bold fs-5">
                     <li class="nav-item">

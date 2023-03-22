@@ -18,30 +18,30 @@
                     <!-- Sign in -->
                     <div class="shared-form">
                         <h2 class="mb-5 tilt-font text-center">Sign up to Dandelion</h2>
-                        <form action="" id="register" class="row g-3">
+                        <form action="./SignUp/NewReg" id="register" method="POST" class="row g-3">
                             <div class="col-md-6">
-                                <label for="" class="form-label fw-bold">Name</label>
-                                <input type="text" class="form-control form-control-lg input-color" required>
+                                <label for="firstname" class="form-label fw-bold">First Name</label>
+                                <input type="text" name="firstname" class="form-control form-control-lg input-color" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="" class="form-label fw-bold">Username</label>
-                                <input type="text" class="form-control form-control-lg input-color" required>
+                                <label for="username" class="form-label fw-bold">Username</label>
+                                <input type="text" name="username" class="form-control form-control-lg input-color" required>
                             </div>
                             <div class="col-md-12">
-                                <label for="" class="form-label fw-bold">Email</label>
-                                <input type="email" class="form-control form-control-lg input-color" required>
+                                <label for="email" class="form-label fw-bold">Email</label>
+                                <input type="email" name="email" class="form-control form-control-lg input-color" required>
                             </div>
                             <div class="col-md-12">
-                                <label for="" class="form-label fw-bold">Password</label>
-                                <input type="password" class="form-control form-control-lg input-color" required>
+                                <label for="password" class="form-label fw-bold">Password</label>
+                                <input type="password" name="password" class="form-control form-control-lg input-color" required>
                             </div>
                             <div class="col-md-12">
-                                <label for="" class="form-label fw-bold">Password Confirm</label>
-                                <input type="password" class="form-control form-control-lg input-color" required>
+                                <label for="password_confirm" class="form-label fw-bold">Password Confirm</label>
+                                <input type="password" name="password_confirm" class="form-control form-control-lg input-color" required>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <input type="checkbox" name="terms" class="form-check-input terms" id="exampleCheck1">
                                     <label class="form-check-label user-select-none text-muted" for="exampleCheck1">Creating an
                                         account means you’re okay with our
                                         <a href="" class="text-decoration-none text-link">Terms of Service</a>,
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-dark w-100 mt-3">Sign Up</button>
+                                <button type="submit" name="btnSignup" class="btn btn-dark w-100 mt-3">Sign Up</button>
                             </div>
                         </form>
                         <div class="not-member d-flex justify-content-center mt-3">
@@ -67,3 +67,4 @@
         </div>
     </div>
 </div>
+<script src="./assets/js/signup.js"></script>

@@ -18,10 +18,10 @@
                     <!-- Sign in -->
                     <div class="shared-form">
                         <h2 class="mb-5 tilt-font text-center">Sign in to Dandelion</h2>
-                        <form action="" id="login" class="row g-3">
+                        <form action="" id="sigin" method="POST" class="row g-3">
                             <div class="col-md-12">
-                                <label for="" class="form-label fw-bold">Username</label>
-                                <input type="text" class="form-control form-control-lg input-color" required>
+                                <label for="username" class="form-label fw-bold">Username</label>
+                                <input type="text" name="username" class="form-control form-control-lg input-color" required>
                             </div>
                             <div class="col-md-12">
                                 <div class="d-flex justify-content-between">
@@ -29,7 +29,7 @@
                                     <a href="/ForgotPW" class="text-decoration-none text-link">Forgot
                                         password?</a>
                                 </div>
-                                <input type="password" class="form-control form-control-lg input-color" id="" required>
+                                <input type="password" name="password" class="form-control form-control-lg input-color" id="" required>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-check">

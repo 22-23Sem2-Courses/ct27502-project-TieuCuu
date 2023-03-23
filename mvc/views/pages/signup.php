@@ -31,14 +31,15 @@
                             <div class="col-md-12">
                                 <label for="email" class="form-label fw-bold">Email</label>
                                 <input type="email" name="email" class="form-control form-control-lg input-color" required>
+                                <div id="emailUn" class="form-text" style="font-size: 0.8rem;"><?php echo $data['emailError'] ?? '' ?></div>
                             </div>
                             <div class="col-md-12">
                                 <label for="password" class="form-label fw-bold">Password</label>
                                 <input type="password" name="password" class="form-control form-control-lg input-color" required>
                             </div>
                             <div class="col-md-12">
-                                <label for="password_confirm" class="form-label fw-bold">Password Confirm</label>
-                                <input type="password" name="password_confirm" class="form-control form-control-lg input-color" required>
+                                <label for="confirmPassword" class="form-label fw-bold">Password Confirm</label>
+                                <input type="password" name="confirmPassword" class="form-control form-control-lg input-color" required>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-check">

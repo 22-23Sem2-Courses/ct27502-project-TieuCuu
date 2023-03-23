@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="auth-header">
         <?php require_once "../mvc/views/blocks/header.php" ?>
     </header>
 

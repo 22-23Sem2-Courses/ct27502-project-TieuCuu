@@ -33,6 +33,18 @@ class UserModel extends ConnectDB
             $result = true;
         };
 
-        return $result;
+        return json_encode($result);
+    }
+
+    public function findUserByEmail($email)
+    {
+        $result = false;
+        $sql = "SELECT UserID from Users WHERE UserEmail = ?";
+        $stmt = $this->PDO->prepare($sql);
+        if ($stmt->execute([$email]) && $stmt->rowCount() > 0) {
+            $result = true;
+        };
+
+        return json_encode($result);
     }
 }

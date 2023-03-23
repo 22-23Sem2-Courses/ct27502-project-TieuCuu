@@ -28,7 +28,7 @@ class Signup extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnSignup'])) {
 
             // Sanitize POST data
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
             $data = [
                 'firstname' => trim($_POST['firstname']),
@@ -44,7 +44,8 @@ class Signup extends Controller
             ];
 
             //print_r($data);
-            $firstnameValidation = "/^[\p{L}'][ \p{L}'-]*[\p{L}]$/";
+
+            $firstnameValidation = "/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u";
             $nameValidation = "/^[a-zA-Z0-9]*$/";
             $passwordValidation = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/";
 
@@ -54,8 +55,9 @@ class Signup extends Controller
             } else if (!preg_match($firstnameValidation, $data['firstname'])) {
                 $data['firstnameError'] = 'Invalid firstname.';
             }
-            echo preg_match($firstnameValidation, $data['firstname']);
+
             echo $firstnameValidation;
+            echo preg_match($firstnameValidation, $data['firstname']);
             echo $data['firstname'];
             echo $data['firstnameError'];
 
@@ -91,12 +93,33 @@ class Signup extends Controller
             }
 
             echo $data['passwordError'];
+
+
+            //Validate password confirm
+            if (empty($data['confirmPassword'])) {
+                $data['confirmPasswordError'] = 'Please enter password.';
+            } else {
+                if ($data['password'] !== $data['confirmPassword']) {
+                    $data['confirmPasswordError'] = 'Passwords do not match, please try again.';
+                }
+            }
+
+            echo $data['password'];
+            echo $data['confirmPassword'];
+            echo $data['confirmPasswordError'];
+
+            //make sure that errors are empty
+            if (empty($data['firstnameError']) && empty($data['usernameError']) && empty($data['emailError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
+
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+            }
         }
 
 
         //2. insert vào bảng database
         //$result = $this->UserModel->InsertNewUser($firstname, $username, $email, $password);
-
+        if ($this->UserModel->InsertNewUser($data)) {
+        }
 
 
 

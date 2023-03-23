@@ -21,7 +21,8 @@
                         <form action="./SignUp/NewReg" id="register" method="POST" class="row g-3">
                             <div class="col-md-6">
                                 <label for="firstname" class="form-label fw-bold">First Name</label>
-                                <input type="text" name="firstname" class="form-control form-control-lg input-color" required>
+                                <input type="text" name="firstname" id="firstname" class="form-control form-control-lg input-color" required>
+                                <div id="messageFr" class="form-text" style="font-size: 0.8rem;"></div>
                             </div>
                             <div class="col-md-6">
                                 <label for="username" class="form-label fw-bold">Username</label>

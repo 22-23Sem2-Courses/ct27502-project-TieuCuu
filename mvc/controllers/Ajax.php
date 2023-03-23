@@ -11,7 +11,13 @@ class Ajax extends Controller
     //Ajax, gọi hàm checkUserName bên UserModel trả về boolean
     public function checkUserName()
     {
-        $username = $_POST["username"];
+        $username = $_POST['username'];
         echo $this->UserModel->checkUserName($username);
+    }
+
+    public function validateFirstName()
+    {
+        $firstname = $_POST['firstname'];
+        echo $this->UserModel->validateFirstName($firstname);
     }
 }

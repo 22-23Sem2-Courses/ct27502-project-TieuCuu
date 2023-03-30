@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="<?php echo BASE_URL_PATH . "assets/icon/fontawesome-free-6.2.1-web/css/brands.min.css" ?>">
     <link rel="stylesheet" href="<?php echo BASE_URL_PATH . "assets/icon/fontawesome-free-6.2.1-web/css/solid.min.css" ?>">
     <script src="<?php echo BASE_URL_PATH . "assets/bootstrap5/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js" ?>"></script>
+
     <script src="<?php echo BASE_URL_PATH . "assets/jquery/jquery-3.6.3.min.js" ?>"></script>
     <script src="<?php echo BASE_URL_PATH . "assets/jquery/jquery-ui.min.js" ?>"></script>
+
 </head>
 
 <body>

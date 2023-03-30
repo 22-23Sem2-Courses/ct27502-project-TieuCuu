@@ -1,8 +1,12 @@
 <?php
-class Product
+class Product extends Controller
 {
 
     function __construct()
+    {
+    }
+
+    function SayHi()
     {
     }
 
@@ -13,6 +17,7 @@ class Product
 
     public function Detail($id)
     {
-        echo "Home - Category " . $id;
+        //echo "ok" . $id;
+        $this->view("master1", ["page" => "detail"]);
     }
 }

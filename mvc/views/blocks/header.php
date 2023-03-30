@@ -10,13 +10,13 @@
                 </div>
                 <ul class="navbar-category nav navbar-nav mb-2 mb-lg-0 fw-bold fs-5">
                     <li class="nav-item">
-                        <a class="nav-link item--active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link item--active" aria-current="page" href="<?php echo BASE_URL_PATH . "Home#" ?>">Home</a>
                     </li>
                     <li class="nav-item navbar-pop">
-                        <a class="nav-link" href="#recommend-products">Popular</a>
+                        <a class="nav-link" href="<?php echo BASE_URL_PATH . "Home#recommend-products" ?>">Popular</a>
                     </li>
                     <li class="nav-item navbar-pro">
-                        <a class="nav-link" href="#main-products">Products</a>
+                        <a class="nav-link" href="<?php echo BASE_URL_PATH . "Home#main-products" ?>">Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
@@ -49,7 +49,7 @@
                                     <div class="list-item-box px-2">
                                         <div class="row align-items-center cart-item py-2 pe-3 flex-nowrap">
                                             <div class="col-2">
-                                                <img src="./assets/img/pineapple.png" alt="">
+                                                <img src="<?php echo BASE_URL_PATH . "assets/img/pineapple.png" ?>" alt="">
                                             </div>
                                             <div class="col-5">
                                                 <span class="cart-item-name">Pineapple</span>
@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="row align-items-center cart-item py-2 pe-3 flex-nowrap">
                                             <div class="col-2">
-                                                <img src="./assets/img/pineapple.png" alt="">
+                                                <img src="<?php echo BASE_URL_PATH . "assets/img/pineapple.png" ?>" alt="">
                                             </div>
                                             <div class="col-5">
                                                 <span class="cart-item-name">Pineapple</span>
@@ -87,7 +87,7 @@
                                         </div>
                                         <div class="row align-items-center cart-item py-2 pe-3 flex-nowrap">
                                             <div class="col-2">
-                                                <img src="./assets/img/pineapple.png" alt="">
+                                                <img src="<?php echo BASE_URL_PATH . "assets/img/pineapple.png" ?>" alt="">
                                             </div>
                                             <div class="col-5">
                                                 <span class="cart-item-name">Pineapple</span>
@@ -106,7 +106,7 @@
                                         </div>
                                         <div class="row align-items-center cart-item py-2 pe-3 flex-nowrap">
                                             <div class="col-2">
-                                                <img src="./assets/img/pineapple.png" alt="">
+                                                <img src="<?php echo BASE_URL_PATH . "assets/img/pineapple.png" ?>" alt="">
                                             </div>
                                             <div class="col-5">
                                                 <span class="cart-item-name">Pineapple</span>
@@ -125,26 +125,7 @@
                                         </div>
                                         <div class="row align-items-center cart-item py-2 pe-3 flex-nowrap">
                                             <div class="col-2">
-                                                <img src="./assets/img/pineapple.png" alt="">
-                                            </div>
-                                            <div class="col-5">
-                                                <span class="cart-item-name">Pineapple</span>
-                                            </div>
-                                            <div class="col-1">
-                                                <span class="cart-item-amount">3</span>
-                                            </div>
-                                            <div class="col-3">
-                                                <span class="cart-item-price">3.6$</span>
-                                            </div>
-                                            <div class="col-1">
-                                                <div class="cart-item-delete">
-                                                    <i class="fa-solid fa-x"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center cart-item py-2 pe-3 flex-nowrap">
-                                            <div class="col-2">
-                                                <img src="./assets/img/pineapple.png" alt="">
+                                                <img src="<?php echo BASE_URL_PATH . "assets/img/pineapple.png" ?>" alt="">
                                             </div>
                                             <div class="col-5">
                                                 <span class="cart-item-name">Pineapple</span>
@@ -211,7 +192,7 @@
                                 </li>
                             </ul>
                         </div> -->
-                    <a href="/Signin" class="nav-login ms-3" type="button">Sign in</a>
+                    <a href="<?php echo BASE_URL_PATH . "Signin" ?>" class="dark-green-btn ms-3" type="button">Sign in</a>
                 </div>
             </div>
         </div>
@@ -236,3 +217,5 @@
         </div>
     </div>
 </div>
+
+<script src="<?php echo BASE_URL_PATH . "assets/js/header.js" ?>"></script>

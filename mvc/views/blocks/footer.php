@@ -5,7 +5,7 @@
                 <div class="col-3">
                     <div class="footer-item">
                         <div class="footer-title footer-brand mb-4 d-flex align-items-center">
-                            <img src="./assets/icon/dandelion-sm.png" alt="">
+                            <img src="<?php echo BASE_URL_PATH . "assets/icon/dandelion-sm.png" ?>" alt="">
                             <h4 class="m-0 ms-2 fw-bold">Dandelion</h4>
                         </div>
                         <ul class="list-unstyled small text-muted">

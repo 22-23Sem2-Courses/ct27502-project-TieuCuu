@@ -4,13 +4,13 @@
             <div class="col-5">
                 <section class="shared-sidebar">
                     <header class="text-center">
-                        <a class="navbar-brand fs-3 fw-bold m-0 mb-3 d-block" href="/Home">Dandelion</a>
+                        <a class="navbar-brand fs-3 fw-bold m-0 mb-3 d-block" href="<?php echo BASE_URL_PATH . "Home" ?>">Dandelion</a>
                         <div class="">
                             <h1 class="fw-bold dosis-font">Experience freshness every day</h1>
                             <h1 class="fw-bold dosis-font">Natural & Nutrition.</h1>
                         </div>
                     </header>
-                    <img src="./assets/img/3.png" alt="">
+                    <img src="<?php echo BASE_URL_PATH . "assets/img/3.png" ?>" alt="">
                 </section>
             </div>
             <div class="col-7">
@@ -31,8 +31,8 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="email" class="form-label fw-bold">Email</label>
-                                <input type="email" name="email" class="form-control form-control-lg input-color" required>
-                                <div id="emailUn" class="form-text" style="font-size: 0.8rem;"><?php echo $data['emailError'] ?? '' ?></div>
+                                <input type="email" name="email" id="email" class="form-control form-control-lg input-color" required>
+                                <div id="messageEm" class="form-text" style="font-size: 0.8rem;"><?php echo $data['emailError'] ?? '' ?></div>
                             </div>
                             <div class="col-md-12">
                                 <label for="password" class="form-label fw-bold">Password</label>
@@ -60,7 +60,7 @@
                         </form>
                         <div class="not-member d-flex justify-content-center mt-3">
                             <span>Already a member?
-                                <a href="/Signin" class="text-decoration-none text-link">Sign in
+                                <a href="<?php echo BASE_URL_PATH . "Signin" ?>" class="text-decoration-none text-link">Sign in
                                     now</a>
                             </span>
                         </div>
@@ -70,7 +70,7 @@
         </div>
     </div>
 </div>
-<script src="./assets/js/signup.js"></script>
+<script src="<?php echo BASE_URL_PATH . "assets/js/signup.js" ?>"></script>
 
 <?php if (isset($data["result"])) { ?>
     <h3><?php

@@ -36,7 +36,7 @@ class UserModel extends ConnectDB
         return json_encode($result);
     }
 
-    public function findUserByEmail($email)
+    public function checkUserEmail($email)
     {
         $result = false;
         $sql = "SELECT UserID from Users WHERE UserEmail = ?";
@@ -46,24 +46,5 @@ class UserModel extends ConnectDB
         };
 
         return json_encode($result);
-    }
-
-    public function validateFirstName($firstname)
-    {
-        $data = [
-            'firstnameError' => '',
-            'result' => true
-        ];
-
-        $firstnameValidation = "/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u";
-        if (empty($firstname)) {
-            $data['firstnameError'] = 'Please enter firstname.';
-            $data['result'] = false;
-        } else if (!preg_match($firstnameValidation, $firstname)) {
-            $data['firstnameError'] = 'Invalid firstname.';
-            $data['result'] = false;
-        }
-
-        return json_encode($data);
     }
 }

@@ -15,9 +15,9 @@ class Ajax extends Controller
         echo $this->UserModel->checkUserName($username);
     }
 
-    public function validateFirstName()
+    public function checkUserEmail()
     {
-        $firstname = $_POST['firstname'];
-        echo $this->UserModel->validateFirstName($firstname);
+        $email = $_POST['email'];
+        echo $this->UserModel->checkUserEmail($email);
     }
 }

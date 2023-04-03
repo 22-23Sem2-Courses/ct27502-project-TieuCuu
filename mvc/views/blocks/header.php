@@ -167,27 +167,35 @@
                             <ul class="dropdown-menu shadow rounded border-0 p-0 overflow-hidden">
                                 <li>
                                     <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-user"></i>
-                                        <span class="ms-2">My Account</span>
+                                        <i class="fa-solid fa-user" style="color: #097177;"></i>
+                                        <span class="ps-1">My Account</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-bag-shopping"></i>
-                                        <span class="ms-2">My Purchase</span>
+                                        <i class="fa-brands fa-shopify" style="color: #f7462e;"></i>
+                                        <span class="ps-1">My Purchase</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-heart"></i>
-                                        <span class="ms-2">Liked</span>
+                                        <i class="fa-solid fa-bookmark" style="color: #ffce3e;"></i>
+                                        <span class="ps-1">Saved</span>
                                     </a>
                                 </li>
+                                <?php if (isset($_SESSION["role"]) && $_SESSION["role"] == 0) { ?>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fa-solid fa-database" style="color: #1c9662;"></i>
+                                            <span class="ps-1">Dashboard</span>
+                                        </a>
+                                    </li>
+                                <?php } ?>
                                 <li>
                                     <hr class="dropdown-divider my-0">
                                     <a class="dropdown-item" href="<?php echo BASE_URL_PATH . "Signin/logout" ?>">
-                                        <i class="fa-solid fa-right-from-bracket"></i>
-                                        <span class="ms-2">Logout</span>
+                                        <i class="fa-solid fa-right-from-bracket" style="color: #f14e63;"></i>
+                                        <span class="ps-1">Logout</span>
                                     </a>
                                     </hr>
                                 </li>

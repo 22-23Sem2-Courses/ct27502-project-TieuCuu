@@ -134,6 +134,11 @@ header.auth-header::after {
     background-color: #f0f8f7 !important;
 }
 
+.menu-bars ul li a span {
+    color: #2e2e35 !important;
+    font-size: 0.875rem;
+}
+
 /* Footer */
 .footer-block {
     background-color: var(--green-white) !important;

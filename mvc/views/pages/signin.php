@@ -22,6 +22,9 @@
                             <div class="col-md-12">
                                 <label for="username" class="form-label fw-bold">Username</label>
                                 <input type="text" name="username" class="form-control form-control-lg input-color" required>
+                                <div class="text-danger" style="font-size: 0.8rem;">
+                                    <?php echo $data["data"]["usernameError"] ?? "" ?>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="d-flex justify-content-between">
@@ -30,8 +33,8 @@
                                         password?
                                     </a>
                                 </div>
-                                <input type="password" name="password" class="form-control form-control-lg input-color is-invalid" id="" required>
-                                <div class="invalid-feedback">
+                                <input type="password" name="password" class="form-control form-control-lg input-color" id="" required>
+                                <div class="text-danger" style="font-size: 0.8rem;">
                                     <?php echo $data["data"]["passwordError"] ?? "" ?>
                                 </div>
                             </div>
@@ -43,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-dark w-100 mt-3">Sign In</button>
+                                <button type="submit" class="btn btn-dark w-100 mt-2">Sign In</button>
                             </div>
                         </form>
                         <div class="not-member d-flex justify-content-center mt-3">

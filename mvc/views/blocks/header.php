@@ -159,7 +159,8 @@
 
 
                     <!-- Menu bar -->
-                    <!-- <div class="menu-bars ms-2 dropdown">
+                    <?php if (isset($_SESSION["user_id"])) { ?>
+                        <div class="menu-bars ms-2 dropdown">
                             <div class="btn">
                                 <i class="fa-solid fa-bars"></i>
                             </div>
@@ -184,15 +185,17 @@
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider my-0">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="<?php echo BASE_URL_PATH . "Signin/logout" ?>">
                                         <i class="fa-solid fa-right-from-bracket"></i>
                                         <span class="ms-2">Logout</span>
                                     </a>
                                     </hr>
                                 </li>
                             </ul>
-                        </div> -->
-                    <a href="<?php echo BASE_URL_PATH . "Signin" ?>" class="dark-green-btn ms-3" type="button">Sign in</a>
+                        </div>
+                    <?php } else { ?>
+                        <a href="<?php echo BASE_URL_PATH . "Signin" ?>" class="dark-green-btn ms-3" type="button">Sign in</a>
+                    <?php } ?>
                 </div>
             </div>
         </div>

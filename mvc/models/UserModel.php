@@ -9,7 +9,6 @@ class UserModel extends ConnectDB
         $this->PDO = $this->connect();
     }
 
-
     public function InsertNewUser($firstname, $username, $email, $password)
     {
         $result = false;
@@ -46,5 +45,26 @@ class UserModel extends ConnectDB
         };
 
         return json_encode($result);
+    }
+
+    public function signin($username, $password)
+    {
+
+        $sql = 'SELECT * from Users WHERE Username = ?';
+
+        $stmt = $this->PDO->prepare($sql);
+
+        if ($stmt->execute([$username])) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $hashedPassword = $row['UserPassword'] ?? "";
+
+            if (password_verify($password, $hashedPassword)) {
+                return json_encode($row);
+            } else {
+                return json_encode(false);
+            }
+        } else {
+            return json_encode(false);
+        }
     }
 }

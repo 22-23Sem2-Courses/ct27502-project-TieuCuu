@@ -18,7 +18,7 @@
                     <!-- Sign in -->
                     <div class="shared-form">
                         <h2 class="mb-5 tilt-font text-center">Sign in to Dandelion</h2>
-                        <form action="" id="sigin" method="POST" class="row g-3">
+                        <form action="/Signin/login" id="sigin" method="POST" class="row g-3">
                             <div class="col-md-12">
                                 <label for="username" class="form-label fw-bold">Username</label>
                                 <input type="text" name="username" class="form-control form-control-lg input-color" required>
@@ -27,9 +27,13 @@
                                 <div class="d-flex justify-content-between">
                                     <label for="" class="form-label fw-bold">Password</label>
                                     <a href="<?php echo BASE_URL_PATH . "ForgotPW" ?>" class="text-decoration-none text-link">Forgot
-                                        password?</a>
+                                        password?
+                                    </a>
                                 </div>
-                                <input type="password" name="password" class="form-control form-control-lg input-color" id="" required>
+                                <input type="password" name="password" class="form-control form-control-lg input-color is-invalid" id="" required>
+                                <div class="invalid-feedback">
+                                    <?php echo $data["data"]["passwordError"] ?? "" ?>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-check">

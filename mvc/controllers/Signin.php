@@ -13,7 +13,7 @@ class Signin extends Controller
 
     public function SayHi()
     {
-        $this->view("master2", ["page" => "signin"]);
+        $this->view('master2', ['page' => 'signin']);
     }
 
     public function login()
@@ -51,58 +51,49 @@ class Signin extends Controller
                 $data['captchaError'] = 'Please enter a captcha.';
             }
 
-            if (!$this->testPhrase($data['captcha'])) {
+            if (!testPhrase($data['captcha'])) {
                 $data['captchaError'] = 'Captcha does not match.';
             }
 
-            if (empty($data["usernameError"]) && empty($data["passwordError"]) && empty($data["captchaError"])) {
-                $signedInUser = $this->UserModel->signin($data["username"], $data["password"]);
+            if (empty($data['usernameError']) && empty($data['passwordError']) && empty($data['captchaError'])) {
+                $signedInUser = $this->UserModel->signin($data['username'], $data['password']);
                 $signedInUser = json_decode($signedInUser, true);
 
                 if ($signedInUser) {
                     $this->createUserSession($signedInUser);
                 } else {
-                    $data["passwordError"] = "Password or username is incorrect. Please try again!";
-                    $this->view("master2", ["page" => "signin", "data" => $data]);
+                    $data['passwordError'] = 'Password or username is incorrect. Please try again!';
+                    $this->view('master2', ['page' => 'signin', 'data' => $data]);
                 }
             }
         } else {
             $data = [
-                "username" => "",
-                "password" => "",
+                'username' => '',
+                'password' => '',
                 'captcha' => '',
                 'captchaError' => '',
-                "usernameError" => "",
-                "passwordError" => ""
+                'usernameError' => '',
+                'passwordError' => ''
             ];
         }
-        $this->view("master2", ["page" => "signin", "data" => $data]);
+        $this->view('master2', ['page' => 'signin', 'data' => $data]);
     }
 
     public function createUserSession($user)
     {
-        $_SESSION["user_id"] = $user["UserID"];
-        $_SESSION["username"] = $user["Username"];
-        $_SESSION["email"] = $user["UserEmail"];
-        $_SESSION["role"] = $user["UserRole"];
+        $_SESSION['user_id'] = $user['UserID'];
+        $_SESSION['username'] = $user['Username'];
+        $_SESSION['email'] = $user['UserEmail'];
+        $_SESSION['role'] = $user['UserRole'];
         redirect('Home');
     }
 
     public function logout()
     {
-        unset($_SESSION["user_id"]);
-        unset($_SESSION["username"]);
-        unset($_SESSION["email"]);
-        unset($_SESSION["role"]);
-        redirect("Signin");
-    }
-
-    public function testPhrase($userInput)
-    {
-        if (isset($_SESSION['phrase']) && $_SESSION['phrase'] === $userInput) {
-            return true;
-        } else {
-            return false;
-        }
+        unset($_SESSION['user_id']);
+        unset($_SESSION['username']);
+        unset($_SESSION['email']);
+        unset($_SESSION['role']);
+        redirect('Signin');
     }
 }

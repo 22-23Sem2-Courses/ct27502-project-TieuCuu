@@ -9,17 +9,15 @@ class UserModel extends ConnectDB
         $this->PDO = $this->connect();
     }
 
-    public function InsertNewUser($firstname, $username, $email, $password)
+    public function createNewUser($data)
     {
         $result = false;
         $sql = "INSERT INTO USERS(UserFirstName, Username, UserEmail, UserPassword) VALUES(?, ?, ?, ?)";
         $stmt = $this->PDO->prepare($sql);
-        if ($stmt->execute([$firstname, $username, $email, $password])) {
+        if ($stmt->execute([$data['firstname'], $data['username'], $data['email'], $data['password']])) {
             $result = true;
-            echo $result;
-            $new_id = $this->PDO->lastInsertId();
+            //$new_id = $this->PDO->lastInsertId();
         };
-
         return json_encode($result);
     }
 
@@ -40,10 +38,9 @@ class UserModel extends ConnectDB
         $result = false;
         $sql = "SELECT UserID from Users WHERE UserEmail = ?";
         $stmt = $this->PDO->prepare($sql);
-        if ($stmt->execute([$email]) && $stmt->rowCount() > 0) {
+        if ($stmt->execute([$email]) && $stmt->rowCount() == 1) {
             $result = true;
         };
-
         return json_encode($result);
     }
 

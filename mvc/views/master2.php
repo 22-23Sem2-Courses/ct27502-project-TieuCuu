@@ -17,6 +17,9 @@
     <script src="<?php echo BASE_URL_PATH . "assets/bootstrap5/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js" ?>"></script>
     <script src="<?php echo BASE_URL_PATH . "assets/jquery/jquery-3.6.3.min.js" ?>"></script>
     <script src="<?php echo BASE_URL_PATH . "assets/jquery/jquery-ui.min.js" ?>"></script>
+    <script src="<?php echo BASE_URL_PATH . "assets/jquery/toastr.min.js" ?>"></script>
+    <link href="<?php echo BASE_URL_PATH . "assets/jquery/toastr.css" ?>" rel="stylesheet" />
+
 </head>
 
 <body>

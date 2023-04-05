@@ -18,29 +18,41 @@
                     <!-- Sign in -->
                     <div class="shared-form">
                         <h2 class="mb-5 tilt-font text-center">Sign up to Dandelion</h2>
-                        <form action="./SignUp/NewReg" id="register" method="POST" class="row g-3">
+                        <form action="/SignUp/NewReg" id="register" method="POST" class="row g-3">
                             <div class="col-md-6">
                                 <label for="firstname" class="form-label fw-bold">First Name</label>
                                 <input type="text" name="firstname" id="firstname" class="form-control form-control-lg input-color" required>
-                                <div id="messageFr" class="form-text" style="font-size: 0.8rem;"></div>
+                                <div class="text-danger" style="font-size: 0.8rem;">
+                                    <?php echo $data["data"]["firstnameError"] ?? "" ?>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="username" class="form-label fw-bold">Username</label>
                                 <input type="text" name="username" id="username" class="form-control form-control-lg input-color" required>
-                                <div id="messageUn" class="form-text" style="font-size: 0.8rem;"></div>
+                                <div class="text-danger" style="font-size: 0.8rem;">
+                                    <?php echo $data["data"]["usernameError"] ?? "" ?>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <label for="email" class="form-label fw-bold">Email</label>
                                 <input type="email" name="email" id="email" class="form-control form-control-lg input-color" required>
-                                <div id="messageEm" class="form-text" style="font-size: 0.8rem;"><?php echo $data['emailError'] ?? '' ?></div>
+                                <div class="text-danger" style="font-size: 0.8rem;">
+                                    <?php echo $data["data"]["emailError"] ?? "" ?>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <label for="password" class="form-label fw-bold">Password</label>
                                 <input type="password" name="password" class="form-control form-control-lg input-color" required>
+                                <div class="text-danger" style="font-size: 0.8rem;">
+                                    <?php echo $data["data"]["passwordError"] ?? "" ?>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <label for="confirmPassword" class="form-label fw-bold">Password Confirm</label>
                                 <input type="password" name="confirmPassword" class="form-control form-control-lg input-color" required>
+                                <div class="text-danger" style="font-size: 0.8rem;">
+                                    <?php echo $data["data"]["confirmPasswordError"] ?? "" ?>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-check">
@@ -52,6 +64,9 @@
                                         and our default
                                         <a href="" class="text-decoration-none text-link">Notification Settings</a>.
                                     </label>
+                                    <div class="text-danger" style="font-size: 0.8rem;">
+                                        <?php echo $data["data"]["termsError"] ?? "" ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -72,13 +87,20 @@
 </div>
 <script src="<?php echo BASE_URL_PATH . "assets/js/signup.js" ?>"></script>
 
-<?php if (isset($data["result"])) { ?>
-    <h3><?php
-        if ($data["result"]) {
-            echo "Đăng ký thành công";
-        } else {
-            echo "Đăng ký thất bại";
-        }
-        ?>
-    </h3>
+<?php if (isset($data['data']['result']) && $data['data']['result']) { ?>
+    <script>
+        $(document).ready(function() {
+            toastr.success("Registration was successful, please login!", "Register Successfully");
+        });
+    </script>
+
+
+<?php;
+} else { ?>
+    <script>
+        $(document).ready(function() {
+            toastr.error("Error occurred please try again!", "Register Error");
+        });
+    </script>
+
 <?php } ?>

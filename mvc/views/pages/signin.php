@@ -66,7 +66,7 @@ $_SESSION['phrase'] = $builder->getPhrase();
 
                             <div class="col-md-12">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <input type="checkbox" name="" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label user-select-none" for="exampleCheck1">Remember
                                         me</label>
                                 </div>

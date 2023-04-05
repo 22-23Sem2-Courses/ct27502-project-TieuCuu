@@ -11,7 +11,7 @@ function redirect($location)
 
 function adminLogin()
 {
-    if (isset($_SESSION['admin_id'])) {
+    if (isset($_SESSION['role']) && $_SESSION['role'] == 0) {
         return true;
     }
     return false;
@@ -19,8 +19,17 @@ function adminLogin()
 
 function userLogin()
 {
-    if (isset($_SESSION['user_id'])) {
+    if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
         return true;
     }
     return false;
+}
+
+function testPhrase($userInput)
+{
+    if (isset($_SESSION['phrase']) && $_SESSION['phrase'] === $userInput) {
+        return true;
+    } else {
+        return false;
+    }
 }

@@ -1,4 +1,7 @@
 <?php
+
+
+
 class Signin extends Controller
 {
     public $UserModel;
@@ -18,6 +21,8 @@ class Signin extends Controller
         $data = [
             'username' => '',
             'password' => '',
+            'captcha' => '',
+            'captchaError' => '',
             'usernameError' => '',
             'passwordError' => ''
         ];
@@ -28,6 +33,8 @@ class Signin extends Controller
             $data = [
                 'username' => trim($_POST['username']),
                 'password' => trim($_POST['password']),
+                'captcha' => trim($_POST['captcha']),
+                'captchaError' => '',
                 'usernameError' => '',
                 'passwordError' => ''
             ];
@@ -40,14 +47,22 @@ class Signin extends Controller
                 $data['passwordError'] = 'Please enter a password.';
             }
 
-            if (empty($data['usernameError']) && empty($data['passwordError'])) {
-                $signedInUser = $this->UserModel->signin($data['username'], $data['password']);
+            if (empty($data['captcha'])) {
+                $data['captchaError'] = 'Please enter a captcha.';
+            }
+
+            if (!$this->testPhrase($data['captcha'])) {
+                $data['captchaError'] = 'Captcha does not match.';
+            }
+
+            if (empty($data["usernameError"]) && empty($data["passwordError"]) && empty($data["captchaError"])) {
+                $signedInUser = $this->UserModel->signin($data["username"], $data["password"]);
                 $signedInUser = json_decode($signedInUser, true);
 
                 if ($signedInUser) {
                     $this->createUserSession($signedInUser);
                 } else {
-                    $data['passwordError'] = 'Password or username is incorrect. Please try again!';
+                    $data["passwordError"] = "Password or username is incorrect. Please try again!";
                     $this->view("master2", ["page" => "signin", "data" => $data]);
                 }
             }
@@ -55,6 +70,8 @@ class Signin extends Controller
             $data = [
                 "username" => "",
                 "password" => "",
+                'captcha' => '',
+                'captchaError' => '',
                 "usernameError" => "",
                 "passwordError" => ""
             ];
@@ -78,5 +95,14 @@ class Signin extends Controller
         unset($_SESSION["email"]);
         unset($_SESSION["role"]);
         redirect("Signin");
+    }
+
+    public function testPhrase($userInput)
+    {
+        if (isset($_SESSION['phrase']) && $_SESSION['phrase'] === $userInput) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

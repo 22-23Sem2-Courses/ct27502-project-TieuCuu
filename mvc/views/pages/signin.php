@@ -1,3 +1,17 @@
+<?php
+
+use Gregwar\Captcha\CaptchaBuilder;
+use Gregwar\Captcha\PhraseBuilder;
+
+$phraseBuilder = new PhraseBuilder(5, '0123456789');
+$builder = new CaptchaBuilder(null, $phraseBuilder);
+$builder->build();
+
+$_SESSION['phrase'] = $builder->getPhrase();
+
+?>
+
+
 <div class="shared-container">
     <div class="container-fluid g-0 h-100 w-100">
         <div class="row g-0">
@@ -38,6 +52,18 @@
                                     <?php echo $data["data"]["passwordError"] ?? "" ?>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <label for="captcha" class="form-label fw-bold">Enter Captcha</label>
+                                <input type="text" name="captcha" class="form-control form-control-lg input-color" required>
+                                <div class="text-danger" style="font-size: 0.8rem;">
+                                    <?php echo $data["data"]["captchaError"] ?? "" ?>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="" class="form-label fw-bold">Captcha Code</label>
+                                <img src="<?php echo $builder->inline()  ?? "" ?>" alt="" class="rounded" style="width: 100%; height: 39px; object-fit: cover;">
+                            </div>
+
                             <div class="col-md-12">
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">

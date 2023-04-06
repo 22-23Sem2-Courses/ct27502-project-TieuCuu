@@ -33,3 +33,36 @@ function testPhrase($userInput)
         return false;
     }
 }
+
+use function PHPSTORM_META\type;
+use function Tamtamchik\SimpleFlash\flash;
+
+function showMessage($type, $messages)
+{
+    //default is danger if type not found
+    $key = 'danger';
+
+    if ($type == 'success')
+        $key = 'success';
+
+    if ($type == 'warning')
+        $key = 'warning';
+
+    if ($type == 'error')
+        $key = 'danger';
+
+    if ($type == 'info')
+        $key = 'primary';
+
+    $html = '<div class="toast-container position-absolute top-0 end-0 p-3" id="">
+                <div class="toast show align-items-center text-white bg-' . $key . ' border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">' . $messages . '</div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            <script>$(".toast").fadeOut(3000);</script>';
+
+    return $html;
+}

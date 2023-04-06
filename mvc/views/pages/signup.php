@@ -87,20 +87,8 @@
 </div>
 <script src="<?php echo BASE_URL_PATH . "assets/js/signup.js" ?>"></script>
 
-<?php if (isset($data['data']['result']) && $data['data']['result']) { ?>
-    <script>
-        $(document).ready(function() {
-            toastr.success("Registration was successful, please login!", "Register Successfully");
-        });
-    </script>
-
-
-<?php;
-} else { ?>
-    <script>
-        $(document).ready(function() {
-            toastr.error("Error occurred please try again!", "Register Error");
-        });
-    </script>
-
-<?php } ?>
+<?php
+if (isset($data["result"])) {
+    echo $data["result"];
+}
+?>

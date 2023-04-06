@@ -87,3 +87,10 @@ $_SESSION['phrase'] = $builder->getPhrase();
         </div>
     </div>
 </div>
+
+
+<?php
+if (isset($data["result"])) {
+    echo $data["result"];
+}
+?>

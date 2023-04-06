@@ -27,8 +27,7 @@ class Signup extends Controller
             'emailError' => '',
             'passwordError' => '',
             'confirmPasswordError' => '',
-            'termsError' => '',
-            'result' => false
+            'termsError' => ''
         ];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnSignup'])) {
@@ -47,8 +46,7 @@ class Signup extends Controller
                 'emailError' => '',
                 'passwordError' => '',
                 'confirmPasswordError' => '',
-                'termsError' => '',
-                'result' => false
+                'termsError' => ''
             ];
 
             $firstnameValidation = "/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u";
@@ -111,16 +109,17 @@ class Signup extends Controller
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $data['confirmPassword'] = '';
 
-                if ($this->UserModel->createNewUser($data)) {
-                    $data['result'] = true;
-                    redirect('Signin');
+                if (json_decode($this->UserModel->createNewUser($data))) {
+                    $result = showMessage('success', 'Welcome back! You have successfully signed up.');
+                    $this->view('master2', ['page' => 'signin', 'result' => $result]);
                 } else {
-                    redirect('Home');
-                    // $this->view('master2', ['page' => 'signin', 'data' => $data]);
+                    $result = showMessage('error', 'Oops something went wrong!');
                 }
+            } else {
+                $result = showMessage('error', 'Please correct the highlighted fields and try again.');
             }
         }
 
-        $this->view('master2', ['page' => 'signup', 'data' => $data]);
+        $this->view('master2', ['page' => 'signup', 'data' => $data, 'result' => $result]);
     }
 }

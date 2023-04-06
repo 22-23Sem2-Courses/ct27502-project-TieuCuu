@@ -337,7 +337,7 @@
     </div>
 </div>
 
-<script src="<?php echo BASE_URL_PATH . "assets/bootstrap5/bootstrap-5.0.2-dist/js/bootstrap-input-spinner.js" ?>"></script>
+<script src="<?php echo BASE_URL_PATH . "assets/bootstrap5/bootstrap-5.2.3-dist/js/bootstrap-input-spinner.js" ?>"></script>
 <script>
     let config = {
         buttonsWidth: "0.5rem",

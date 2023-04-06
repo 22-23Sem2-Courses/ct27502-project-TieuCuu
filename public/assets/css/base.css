@@ -93,35 +93,35 @@ header.auth-header::after {
 }
 
 .dark-green-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 40px;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    text-align: center;
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 20px;
-    color: #fff;
-    background-color: var(--dark-green);
-    transition: background-color 200ms ease;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 40px !important;
+    padding: 10px 16px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    outline: none !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    line-height: 20px !important;
+    color: #fff !important;
+    background-color: var(--dark-green) !important;
+    transition: background-color 200ms ease !important;
 }
 
 .dark-green-btn--sm {
-    height: 32px;
+    height: 32px !important;
 }
 
 .dark-green-btn--lg {
-    height: 50px;
+    height: 50px !important;
 }
 
 .dark-green-btn:hover {
     color: #fff;
-    background-color: #71a293;
+    background-color: #71a293 !important;
 }
 
 .dark-green-btn--option {

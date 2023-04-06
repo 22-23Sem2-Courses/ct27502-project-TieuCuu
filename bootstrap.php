@@ -59,7 +59,7 @@ function showMessage($type, $messages)
                     </div>
                 </div>
             </div>
-            <script>$(".toast").fadeOut(3000);</script>';
+            <script>$(".toast").fadeOut(5000);</script>';
 
     return $html;
 }

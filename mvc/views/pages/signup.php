@@ -21,35 +21,40 @@
                         <form action="/SignUp/NewReg" id="register" method="POST" class="row g-3">
                             <div class="col-md-6">
                                 <label for="firstname" class="form-label fw-bold">First Name</label>
-                                <input type="text" name="firstname" id="firstname" class="form-control form-control-lg input-color" required>
+                                <input type="text" name="firstname" value="<?php echo $data["data"]["firstname"]; ?>" id="firstname" class="form-control form-control-lg input-color <?php if (!empty($data["data"]["firstnameError"])) echo 'is-invalid';
+                                                                                                                                                                                        else echo 'is-valid'; ?>" required>
                                 <div class="text-danger" style="font-size: 0.8rem;">
                                     <?php echo $data["data"]["firstnameError"] ?? "" ?>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="username" class="form-label fw-bold">Username</label>
-                                <input type="text" name="username" id="username" class="form-control form-control-lg input-color" required>
+                                <input type="text" name="username" value="<?php echo $data["data"]["username"]; ?>" id="username" class="form-control form-control-lg input-color <?php if (!empty($data["data"]["usernameError"])) echo 'is-invalid';
+                                                                                                                                                                                    else echo 'is-valid'; ?>" required>
                                 <div class="text-danger" style="font-size: 0.8rem;">
                                     <?php echo $data["data"]["usernameError"] ?? "" ?>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <label for="email" class="form-label fw-bold">Email</label>
-                                <input type="email" name="email" id="email" class="form-control form-control-lg input-color" required>
+                                <input type="email" name="email" value="<?php echo $data["data"]["email"]; ?>" id="email" class="form-control form-control-lg input-color <?php if (!empty($data["data"]["emailError"])) echo 'is-invalid';
+                                                                                                                                                                            else echo 'is-valid'; ?>" required>
                                 <div class="text-danger" style="font-size: 0.8rem;">
                                     <?php echo $data["data"]["emailError"] ?? "" ?>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <label for="password" class="form-label fw-bold">Password</label>
-                                <input type="password" name="password" class="form-control form-control-lg input-color" required>
+                                <input type="password" name="password" value="<?php echo $data["data"]["password"]; ?>" class="form-control form-control-lg input-color <?php if (!empty($data["data"]["passwordError"])) echo 'is-invalid';
+                                                                                                                                                                        else echo 'is-valid'; ?>" required>
                                 <div class="text-danger" style="font-size: 0.8rem;">
                                     <?php echo $data["data"]["passwordError"] ?? "" ?>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <label for="confirmPassword" class="form-label fw-bold">Password Confirm</label>
-                                <input type="password" name="confirmPassword" class="form-control form-control-lg input-color" required>
+                                <input type="password" name="confirmPassword" value="<?php echo $data["data"]["confirmPassword"]; ?>" class="form-control form-control-lg input-color <?php if (!empty($data["data"]["confirmPasswordError"])) echo 'is-invalid';
+                                                                                                                                                                                        else echo 'is-valid'; ?>" required>
                                 <div class="text-danger" style="font-size: 0.8rem;">
                                     <?php echo $data["data"]["confirmPasswordError"] ?? "" ?>
                                 </div>

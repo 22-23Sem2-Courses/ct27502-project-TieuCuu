@@ -34,9 +34,6 @@ function testPhrase($userInput)
     }
 }
 
-use function PHPSTORM_META\type;
-use function Tamtamchik\SimpleFlash\flash;
-
 function showMessage($type, $messages)
 {
     //default is danger if type not found

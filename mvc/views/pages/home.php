@@ -160,10 +160,10 @@
                             </button>
                             <ul class="dropdown-menu dropdown-filter" aria-labelledby="dropdownMenuButton1" style="min-width: 8rem !important;">
                                 <li data-value="abc">
-                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Popularity</a>
                                 </li>
                                 <li data-value="abc">
-                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Availability</a>
                                 </li>
                             </ul>
                         </div>
@@ -176,16 +176,10 @@
                             </button>
                             <ul class="dropdown-menu dropdown-sort" aria-labelledby="dropdownMenuButton1" style="min-width: 8rem !important;">
                                 <li data-value="abc">
-                                    <a class="dropdown-item" href="#">Popularity</a>
-                                </li>
-                                <li data-value="abc">
                                     <a class="dropdown-item" href="#">Price: Low to High</a>
                                 </li>
                                 <li data-value="abc">
                                     <a class="dropdown-item" href="#">Price: High to Low</a>
-                                </li>
-                                <li data-value="abc">
-                                    <a class="dropdown-item" href="#">Availability</a>
                                 </li>
                             </ul>
                         </div>
@@ -216,6 +210,10 @@
                         <div class="col">
                             <nav class="nav navbar-nav">
                                 <a class="nav-link active" data-bs-toggle="tab" aria-current="page" href="#">
+                                    <i class="fa-solid fa-caret-right"></i>
+                                    <span>All Products</span>
+                                </a>
+                                <a class="nav-link" data-bs-toggle="tab" aria-current="page" href="#">
                                     <i class="fa-solid fa-caret-right"></i>
                                     <span>Fruits</span>
                                 </a>

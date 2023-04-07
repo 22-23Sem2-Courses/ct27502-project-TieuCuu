@@ -27,12 +27,12 @@
                                 <div class="carousel-item active" data-bs-interval="4000">
                                     <img src="<?php echo BASE_URL_PATH . "assets/img/pineapple.png" ?>" class="d-block w-100 " alt="product image">
                                 </div>
-                                <div class="carousel-item" data-bs-interval="3000">
+                                <!-- <div class="carousel-item" data-bs-interval="3000">
                                     <img src="<?php echo BASE_URL_PATH . "assets/img/grape.png" ?>" class="d-block w-100" alt="product image">
                                 </div>
                                 <div class="carousel-item" data-bs-interval="3000">
                                     <img src="<?php echo BASE_URL_PATH . "assets/img/strawberry.png" ?>" class="d-block w-100" alt="product image">
-                                </div>
+                                </div> -->
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#product-carousel" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

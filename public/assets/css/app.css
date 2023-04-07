@@ -280,6 +280,9 @@
 .recommend-wrap .recommend-container .card img {
     border-top-left-radius: 25px !important;
     border-top-right-radius: 25px !important;
+    width: 226px !important;
+    height: 226px !important;
+    object-fit: cover;
 }
 
 .recommend-wrap .recommend-container .card .card-body p {
@@ -343,7 +346,11 @@
     transform: translateY(-4px);
 }
 
-.product__list-block {}
+.product__list-block img {
+    width: 245px !important;
+    height: 245px !important;
+    object-fit: cover;
+}
 
 .product__rating-block {
     font-size: 0.8rem;

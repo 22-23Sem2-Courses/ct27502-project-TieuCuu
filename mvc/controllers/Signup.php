@@ -104,7 +104,7 @@ class Signup extends Controller
             }
 
             //make sure that errors are empty
-            if (empty($data['firstnameError']) && empty($data['usernameError']) && empty($data['emailError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
+            if (empty($data['firstnameError']) && empty($data['usernameError']) && empty($data['emailError']) && empty($data['passwordError']) && empty($data['confirmPasswordError']) && empty($data['termsError'])) {
 
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $data['confirmPassword'] = '';

@@ -13,21 +13,15 @@ class Home extends Controller
 
     function SayHi()
     {
-        //model tương tác db, nhận hoặc gửi data
-        //$init = $this->model("ProductModel");
-        //echo $init->GetProduct();
 
+        $rows = $this->ProductModel->GetAllProduct();
 
-        //view, tham số 1 là tên layout, tham số 2 mảng truyền data vào view
-        $a = $this->ProductModel->GetAllProduct();
-        $a = json_decode($a);
-        //print_r($a);
-        $this->view("master1", ["page" => "home", "data" => $a]);
+        $rows = json_decode($rows);
+
+        $this->view("master1", ["page" => "home", "data" => $rows]);
     }
 
     function Sum($a, $b)
     {
-        $init = $this->model("ProductModel");
-        echo $init->Sum($a, $b);
     }
 }

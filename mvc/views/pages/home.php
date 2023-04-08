@@ -1,14 +1,16 @@
 <?php
-// print_r($data["data"]);
+
 
 $arr = $data["data"];
 
+// foreach ($arr as $obj) {
+//     echo $obj->ProductName;
+//     echo $obj->ProductImg;
+//     echo $obj->ProductPrice;
+// }
 
-foreach ($arr as $obj) {
-    echo $obj->ProductName;
-    echo $obj->ProductImg;
-    echo $obj->ProductPrice;
-}
+
+// print_r($data['pag']['pagination']);
 
 ?>
 
@@ -263,49 +265,8 @@ foreach ($arr as $obj) {
                     <div class="row row-cols-1 gy-2">
                         <div class="col">
                             <div class="product__list-block pt-3">
-                                <div class="row row-cols-md-4">
-                                    <?php foreach ($arr as $obj) { ?>
-                                        <div class="col">
-                                            <div class="card mb-5 border-0 rounded-3">
-                                                <a href="<?php echo BASE_URL_PATH . "Product/Detail/" . $obj->ProductID ?>" class="text-reset text-decoration-none ">
-                                                    <img src="<?php echo BASE_URL_PATH . "assets/img/products/" . $obj->ProductImg ?>" class="card-img-top img-fluid recommend-img" alt="...">
-                                                    <div class="recommend-heart">
-                                                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: #fff; stroke-width: 2; overflow: visible;">
-                                                            <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-                                                            </path>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="card-body position-relative">
-                                                        <div class="text-center mb-2">
-                                                            <div class="card-title mb-0 product-name"><?php echo $obj->ProductName ?></div>
-                                                        </div>
-                                                        <div class="text-center">
-                                                            <p>
-                                                                <span class="fw-bold">$1.6</span>
-                                                                /
-                                                                <span class="text-muted">500g</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="product__rating-block d-flex justify-content-between align-items-center py-2">
-                                                            <div class="product__rating-icon">
-                                                                <i class="fa-regular fa-star product__rating--active"></i>
-                                                                <i class="fa-regular fa-star product__rating--active"></i>
-                                                                <i class="fa-regular fa-star product__rating--active"></i>
-                                                                <i class="fa-regular fa-star product__rating--active"></i>
-                                                                <i class="fa-regular fa-star"></i>
-                                                            </div>
-                                                            <span>81 sold</span>
-                                                        </div>
-                                                        <div>
-                                                            <button type="button" class="btn btn-dark cart-btn rounded-circle d-flex justify-content-center align-items-center text-center position-absolute top-100 start-50 translate-middle" style="height: 36px; width: 36px;">
-                                                                <i class="fa-solid fa-cart-shopping"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    <?php }  ?>
+                                <div class="row row-cols-md-4" id="pull-data">
+
 
                                     <!-- <div class="col">
                                         <div class="card mb-5 border-0 rounded-3">
@@ -348,266 +309,14 @@ foreach ($arr as $obj) {
                                                 </div>
                                             </a>
                                         </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card mb-5 border-0 rounded-3">
-                                            <a href="<?php echo BASE_URL_PATH . "Product/Detail/111" ?>" class="text-reset text-decoration-none ">
-                                                <img src="<?php echo BASE_URL_PATH . "assets/img/strawberry.png" ?>" class="card-img-top img-fluid recommend-img" alt="...">
-                                                <div class="recommend-heart">
-                                                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: #fff; stroke-width: 2; overflow: visible;">
-                                                        <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-                                                        </path>
-                                                    </svg>
-                                                </div>
-                                                <div class="card-body position-relative">
-                                                    <div class="text-center mb-2">
-                                                        <div class="card-title mb-0 product-name">Dandelion
-                                                            Strawberry
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <p>
-                                                            <span class="fw-bold">$1.6</span>
-                                                            /
-                                                            <span class="text-muted">500g</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="product__rating-block d-flex justify-content-between align-items-center py-2">
-                                                        <div class="product__rating-icon">
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </div>
-                                                        <span>81 sold</span>
-                                                    </div>
-                                                    <div>
-                                                        <button type="button" class="btn btn-dark cart-btn rounded-circle d-flex justify-content-center align-items-center text-center position-absolute top-100 start-50 translate-middle" style="height: 36px; width: 36px;">
-                                                            <i class="fa-solid fa-cart-shopping"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card mb-5 border-0 rounded-3">
-                                            <a href="<?php echo BASE_URL_PATH . "Product/Detail/111" ?>" class="text-reset text-decoration-none ">
-                                                <img src="<?php echo BASE_URL_PATH . "assets/img/strawberry.png" ?>" class="card-img-top img-fluid recommend-img" alt="...">
-                                                <div class="recommend-heart">
-                                                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: #fff; stroke-width: 2; overflow: visible;">
-                                                        <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-                                                        </path>
-                                                    </svg>
-                                                </div>
-                                                <div class="card-body position-relative">
-                                                    <div class="text-center mb-2">
-                                                        <div class="card-title mb-0 product-name">Dandelion
-                                                            Strawberry
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <p>
-                                                            <span class="fw-bold">$1.6</span>
-                                                            /
-                                                            <span class="text-muted">500g</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="product__rating-block d-flex justify-content-between align-items-center py-2">
-                                                        <div class="product__rating-icon">
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </div>
-                                                        <span>81 sold</span>
-                                                    </div>
-                                                    <div>
-                                                        <button type="button" class="btn btn-dark cart-btn rounded-circle d-flex justify-content-center align-items-center text-center position-absolute top-100 start-50 translate-middle" style="height: 36px; width: 36px;">
-                                                            <i class="fa-solid fa-cart-shopping"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card mb-5 border-0 rounded-3">
-                                            <a href="<?php echo BASE_URL_PATH . "Product/Detail/111" ?>" class="text-reset text-decoration-none ">
-                                                <img src="<?php echo BASE_URL_PATH . "assets/img/strawberry.png" ?>" class="card-img-top img-fluid recommend-img" alt="...">
-                                                <div class="recommend-heart">
-                                                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: #fff; stroke-width: 2; overflow: visible;">
-                                                        <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-                                                        </path>
-                                                    </svg>
-                                                </div>
-                                                <div class="card-body position-relative">
-                                                    <div class="text-center mb-2">
-                                                        <div class="card-title mb-0 product-name">Dandelion
-                                                            Strawberry
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <p>
-                                                            <span class="fw-bold">$1.6</span>
-                                                            /
-                                                            <span class="text-muted">500g</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="product__rating-block d-flex justify-content-between align-items-center py-2">
-                                                        <div class="product__rating-icon">
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </div>
-                                                        <span>81 sold</span>
-                                                    </div>
-                                                    <div>
-                                                        <button type="button" class="btn btn-dark cart-btn rounded-circle d-flex justify-content-center align-items-center text-center position-absolute top-100 start-50 translate-middle" style="height: 36px; width: 36px;">
-                                                            <i class="fa-solid fa-cart-shopping"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card mb-5 border-0 rounded-3">
-                                            <a href="<?php echo BASE_URL_PATH . "Product/Detail/111" ?>" class="text-reset text-decoration-none ">
-                                                <img src="<?php echo BASE_URL_PATH . "assets/img/strawberry.png" ?>" class="card-img-top img-fluid recommend-img" alt="...">
-                                                <div class="recommend-heart">
-                                                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: #fff; stroke-width: 2; overflow: visible;">
-                                                        <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-                                                        </path>
-                                                    </svg>
-                                                </div>
-                                                <div class="card-body position-relative">
-                                                    <div class="text-center mb-2">
-                                                        <div class="card-title mb-0 product-name">Dandelion
-                                                            Strawberry
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <p>
-                                                            <span class="fw-bold">$1.6</span>
-                                                            /
-                                                            <span class="text-muted">500g</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="product__rating-block d-flex justify-content-between align-items-center py-2">
-                                                        <div class="product__rating-icon">
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </div>
-                                                        <span>81 sold</span>
-                                                    </div>
-                                                    <div>
-                                                        <button type="button" class="btn btn-dark cart-btn rounded-circle d-flex justify-content-center align-items-center text-center position-absolute top-100 start-50 translate-middle" style="height: 36px; width: 36px;">
-                                                            <i class="fa-solid fa-cart-shopping"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card mb-5 border-0 rounded-3">
-                                            <a href="<?php echo BASE_URL_PATH . "Product/Detail/111" ?>" class="text-reset text-decoration-none ">
-                                                <img src="<?php echo BASE_URL_PATH . "assets/img/strawberry.png" ?>" class="card-img-top img-fluid recommend-img" alt="...">
-                                                <div class="recommend-heart">
-                                                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: #fff; stroke-width: 2; overflow: visible;">
-                                                        <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-                                                        </path>
-                                                    </svg>
-                                                </div>
-                                                <div class="card-body position-relative">
-                                                    <div class="text-center mb-2">
-                                                        <div class="card-title mb-0 product-name">Dandelion
-                                                            Strawberry
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <p>
-                                                            <span class="fw-bold">$1.6</span>
-                                                            /
-                                                            <span class="text-muted">500g</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="product__rating-block d-flex justify-content-between align-items-center py-2">
-                                                        <div class="product__rating-icon">
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </div>
-                                                        <span>81 sold</span>
-                                                    </div>
-                                                    <div>
-                                                        <button type="button" class="btn btn-dark cart-btn rounded-circle d-flex justify-content-center align-items-center text-center position-absolute top-100 start-50 translate-middle" style="height: 36px; width: 36px;">
-                                                            <i class="fa-solid fa-cart-shopping"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card mb-5 border-0 rounded-3">
-                                            <a href="<?php echo BASE_URL_PATH . "Product/Detail/111" ?>" class="text-reset text-decoration-none ">
-                                                <img src="<?php echo BASE_URL_PATH . "assets/img/strawberry.png" ?>" class="card-img-top img-fluid recommend-img" alt="...">
-                                                <div class="recommend-heart">
-                                                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: #fff; stroke-width: 2; overflow: visible;">
-                                                        <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-                                                        </path>
-                                                    </svg>
-                                                </div>
-                                                <div class="card-body position-relative">
-                                                    <div class="text-center mb-2">
-                                                        <div class="card-title mb-0 product-name">Dandelion
-                                                            Strawberry
-                                                        </div>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <p>
-                                                            <span class="fw-bold">$1.6</span>
-                                                            /
-                                                            <span class="text-muted">500g</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="product__rating-block d-flex justify-content-between align-items-center py-2">
-                                                        <div class="product__rating-icon">
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star product__rating--active"></i>
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </div>
-                                                        <span>81 sold</span>
-                                                    </div>
-                                                    <div>
-                                                        <button type="button" class="btn btn-dark cart-btn rounded-circle d-flex justify-content-center align-items-center text-center position-absolute top-100 start-50 translate-middle" style="height: 36px; width: 36px;">
-                                                            <i class="fa-solid fa-cart-shopping"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
                                     </div> -->
+
 
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Pagination block -->
-
 
                     <div class="row">
                         <div class="col">
@@ -616,7 +325,7 @@ foreach ($arr as $obj) {
                                     <div class="col">
                                         <div class="product__page-item mt-3">
                                             <nav>
-                                                <ul class="pagination justify-content-center">
+                                                <ul class="pagination justify-content-center" id="pull-page">
                                                     <li class="page-item">
                                                         <a class="btn border rounded-circle d-flex justify-content-center align-items-center mx-1" href="#" aria-label="Previous" style="width: 36px; height: 36px;">
                                                             <span aria-hidden="true">&laquo;</span>
@@ -676,5 +385,31 @@ foreach ($arr as $obj) {
         </div>
     </div>
 </div>
+
+<script>
+    function fetch_data(page) {
+        $.ajax({
+            url: "Ajax/Pagination",
+            method: "POST",
+            dataType: 'json',
+            data: {
+                page: page
+            },
+            success: function(data) {
+
+                $("#pull-data").html(data.html1);
+                $("#pull-page").html(data.html2);
+            }
+        })
+    }
+
+    fetch_data();
+
+    $(document).on("click", ".page-item", function() {
+        let page = $(this).attr("page-id");
+
+        fetch_data(page);
+    })
+</script>
 
 <script src=" <?php echo BASE_URL_PATH . "assets/js/index.js" ?>"></script>

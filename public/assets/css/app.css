@@ -378,7 +378,7 @@
     text-align: center;
 }
 
-.product__page-item .page-item .btn.active {
+.product__page-item .page-item.active {
     color: #fff;
     background-color: #212529;
     border-color: #212529;

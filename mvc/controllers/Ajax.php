@@ -101,7 +101,7 @@ class Ajax extends Controller
             $previous = $page - 1;
 
             $displayPage .= '<li class="page-item" page-id="1"><span class="page-link">&laquo;</span></li>';
-            $displayPage .= '<li class="page-item" page-id="' . $previous . '"></li>';
+            //$displayPage .= '<li class="page-item" page-id="' . $previous . '"></li>';
         }
 
         for ($i = 1; $i <= $total_pages; $i++) {

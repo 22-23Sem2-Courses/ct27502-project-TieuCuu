@@ -100,7 +100,7 @@ class Ajax extends Controller
         if ($page > 1) {
             $previous = $page - 1;
 
-            $displayPage .= '<li class="page-item" page-id="1"><span class="page-link">&laquo;</span></li>';
+            $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1" page-id="1" style="width: 36px; height: 36px;"><span style="transform: translateY(-2%);">&laquo;</span></li>';
             //$displayPage .= '<li class="page-item" page-id="' . $previous . '"></li>';
         }
 
@@ -109,13 +109,13 @@ class Ajax extends Controller
             if ($i == $page) {
                 $active_class = "active";
             }
-            $displayPage .= '<li class="page-item ' . $active_class . '" page-id="' . $i . '"><span class="page-link">' . $i . '</span></li>';
+            $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1 ' . $active_class . '" page-id="' . $i . '" style="width: 36px; height: 36px;"><span>' . $i . '</span></li>';
         }
 
         if ($page < $total_pages) {
             $page++;
-            $displayPage .= '<li class="page-item" page-id="' . $page . '">';
-            $displayPage .= '<li class="page-item" page-id="' . $total_pages . '"><span class="page-link">&raquo;</span></li>';
+            // $displayPage .= '<li class="page-item" page-id="' . $page . '">';
+            $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1" page-id="' . $total_pages . '" style="width: 36px; height: 36px;"><span style="transform: translateY(-2%);">&raquo;</span></li>';
         }
 
 

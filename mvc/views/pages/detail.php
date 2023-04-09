@@ -1,3 +1,9 @@
+<?php
+
+print_r($data["data"][0]->ProductName);
+print_r($data["data"][0]->ProductImg);
+?>
+
 <div class="page-product-container my-3">
     <div class="container">
 
@@ -7,7 +13,7 @@
                 <ol class="breadcrumb m-0 p-3">
                     <li class="breadcrumb-item"><a class="text-decoration-none" href="<?php echo BASE_URL_PATH . "Home" ?>">Home</a></li>
                     <li class="breadcrumb-item" aria-current="page"><a class="text-decoration-none" href="<?php echo BASE_URL_PATH . "Home#main-products" ?>">Products</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Strawberry</li>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo $data["data"][0]->ProductName; ?></li>
                 </ol>
             </nav>
         </section>
@@ -25,7 +31,7 @@
                             </div>
                             <div class="carousel-inner rounded">
                                 <div class="carousel-item active" data-bs-interval="4000">
-                                    <img src="<?php echo BASE_URL_PATH . "assets/img/pineapple.png" ?>" class="d-block w-100 " alt="product image">
+                                    <img src="<?php echo BASE_URL_PATH . "assets/img/products/" . $data["data"][0]->ProductImg ?>" class="d-block w-100 " alt="product image">
                                 </div>
                                 <!-- <div class="carousel-item" data-bs-interval="3000">
                                     <img src="<?php echo BASE_URL_PATH . "assets/img/grape.png" ?>" class="d-block w-100" alt="product image">
@@ -47,7 +53,7 @@
                 </div>
                 <div class="col-7">
                     <div class="product__detail-info">
-                        <h1 class="product__detail-title mb-0">DaLat Strawberry</h1>
+                        <h1 class="product__detail-title mb-0"><?php echo $data["data"][0]->ProductName; ?></h1>
                         <div class="d-flex align-items-center">
                             <div class="product__rating-block pe-3 py-3">
                                 <div class="product__rating-icon">
@@ -71,8 +77,8 @@
                             <div class="product__detail-boxprice d-flex align-items-center mb-4">
                                 <h4 class="me-3">Price:</h4>
                                 <div class="d-flex align-items-center justify-content-around">
-                                    <strong>$25</strong>
-                                    <span>$31</span>
+                                    <strong><?php echo "$" . $data["data"][0]->ProductPrice; ?></strong>
+                                    <span><?php echo "$" . intval($data["data"][0]->ProductPrice * 1.5); ?></span>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mb-4">

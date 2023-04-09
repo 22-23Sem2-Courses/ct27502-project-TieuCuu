@@ -22,7 +22,7 @@ class Product extends Controller
         if (preg_match($ProductIDRegex, $id)) {
             $data = json_decode($this->ProductModel->GetProductByID($id));
             if (!empty($data)) {
-                $this->view("master2", ["page" => "detail", "data" => $data]);
+                $this->view("master1", ["page" => "detail", "data" => $data]);
             } else {
                 $this->view("master2", ["page" => "404", "message" => "The product was not found."]);
                 exit();

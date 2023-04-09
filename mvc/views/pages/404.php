@@ -1,5 +1,5 @@
-<div>
-    <h1 class="mt-5"><?php echo $data["message"] ?? "Page not found" ?></h1>
+<div class="" style="margin-top: 5%;">
+    <h1 class="my-5"><?php echo $data["message"] ?? "Page not found" ?></h1>
     <section class="error-container">
         <span class="four"><span class="screen-reader-text">4</span></span>
         <span class="zero"><span class="screen-reader-text">0</span></span>

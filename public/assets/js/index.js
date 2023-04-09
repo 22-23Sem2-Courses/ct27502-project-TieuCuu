@@ -21,7 +21,7 @@ $(function () {
 
 //Click heart add active class
 $(function () {
-    $('.recommend-heart').on('click', function (e) {
+    $(document).on('click', '.recommend-heart', function (e) {
         e.preventDefault()
         $(this).hasClass('heart-active') ? $(this).removeClass('heart-active') : $(this).addClass('heart-active')
 
@@ -75,8 +75,16 @@ $(function () {
 })
 
 
+function scrollWin() {
+    let position = $('.product-container').position().top;
+    position = position * 0.85;
+    window.scrollTo(0, position);
+}
 
-
+//scroll To middle when clicking in paggination
+$(document).on('click', '.pagination li.page-item', function () {
+    scrollWin();
+})
 
 
 

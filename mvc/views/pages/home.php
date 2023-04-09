@@ -223,7 +223,7 @@
                     <div class="row">
                         <div class="col">
                             <nav class="nav navbar-nav">
-                                <a class="nav-link active" category="all" data-bs-toggle="tab" aria-current="page" href="#">
+                                <a class="nav-link active" data-bs-toggle="tab" aria-current="page" href="#">
                                     <i class="fa-solid fa-caret-right"></i>
                                     <span>All Products</span>
                                 </a>
@@ -387,7 +387,7 @@
     function fetch_data(page) {
 
         $.ajax({
-            url: `Ajax/Pagination/${localStorage.getItem("category") ?? "All"}`,
+            url: `http://ct275.test/Ajax/Pagination/${localStorage.getItem("category") ?? "All"}`,
             method: "POST",
             dataType: 'json',
             data: {
@@ -411,7 +411,8 @@
     })
 
     $('.product__category-container a.nav-link').on("click", function() {
-        localStorage.setItem("category", $(this).attr('category'));
+        let category = $(this).attr('category') ?? 'All';
+        localStorage.setItem("category", category);
         fetch_data();
     })
 </script>

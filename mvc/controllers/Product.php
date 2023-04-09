@@ -24,11 +24,11 @@ class Product extends Controller
             if (!empty($data)) {
                 $this->view("master1", ["page" => "detail", "data" => $data]);
             } else {
-                $this->view("master2", ["page" => "404", "message" => "The product was not found."]);
+                $this->view("master2", ["page" => "404", "message" => "Oops! The product was not found."]);
                 exit();
             }
         } else {
-            $this->view("master2", ["page" => "404", "message" => "The product was not found."]);
+            $this->view("master2", ["page" => "404", "message" => "Oops! The product was not found."]);
             exit();
         }
     }

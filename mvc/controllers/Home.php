@@ -18,8 +18,4 @@ class Home extends Controller
 
         $this->view("master1", ["page" => "home", "products" => $recommendProducts]);
     }
-
-    function Sum($a, $b)
-    {
-    }
 }

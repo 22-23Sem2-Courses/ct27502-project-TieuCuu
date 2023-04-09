@@ -8,11 +8,10 @@ class Ajax extends Controller
         $this->ProductModel = $this->model("ProductModel");
     }
 
-    public function Pagination($cate)
+    public function Pagination($category)
     {
         $limit = 8;
         $page = 0;
-        $category = '';
 
         $display = "";
 
@@ -22,8 +21,8 @@ class Ajax extends Controller
             $page = 1;
         }
 
-        if (!empty($cate)) {
-            $category = ucfirst($cate);
+        if (empty($cate)) {
+            $category = ucfirst($category);
         } else {
             $category = 'All';
         }

@@ -14,11 +14,7 @@ class Home extends Controller
     function SayHi()
     {
 
-        $rows = $this->ProductModel->GetAllProduct();
-
-        $rows = json_decode($rows);
-
-        $this->view("master1", ["page" => "home", "data" => $rows]);
+        $this->view("master1", ["page" => "home"]);
     }
 
     function Sum($a, $b)

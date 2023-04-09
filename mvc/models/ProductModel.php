@@ -10,12 +10,11 @@ class ProductModel extends ConnectDB
         $this->PDO = $this->connect();
     }
 
-    public function GetAllProduct()
+    public function GetProductByID($id)
     {
-        $sql = "SELECT * FROM PRODUCTS";
+        $sql = "SELECT * FROM PRODUCTS WHERE ProductID = ?";
         $stmt = $this->PDO->prepare($sql);
-
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
+        if ($stmt->execute([$id]) && $stmt->rowCount() > 0) {
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return json_encode($rows);
         }

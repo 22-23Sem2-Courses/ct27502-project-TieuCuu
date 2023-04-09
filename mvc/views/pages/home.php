@@ -1,17 +1,5 @@
 <?php
 
-
-$arr = $data["data"];
-
-// foreach ($arr as $obj) {
-//     echo $obj->ProductName;
-//     echo $obj->ProductImg;
-//     echo $obj->ProductPrice;
-// }
-
-
-// print_r($data['pag']['pagination']);
-
 ?>
 
 
@@ -326,7 +314,7 @@ $arr = $data["data"];
                                         <div class="product__page-item mt-3">
                                             <nav>
                                                 <ul class="pagination justify-content-center" id="pull-page">
-                                                    <li class="page-item">
+                                                    <!-- <li class="page-item">
                                                         <a class="btn border rounded-circle d-flex justify-content-center align-items-center mx-1" href="#" aria-label="Previous" style="width: 36px; height: 36px;">
                                                             <span aria-hidden="true">&laquo;</span>
                                                         </a>
@@ -351,7 +339,7 @@ $arr = $data["data"];
                                                         <a class="btn border rounded-circle d-flex justify-content-center align-items-center mx-1" href="#" aria-label="Previous" style="width: 36px; height: 36px;">
                                                             <span aria-hidden="true">&raquo;</span>
                                                         </a>
-                                                    </li>
+                                                    </li> -->
                                                 </ul>
                                             </nav>
                                         </div>
@@ -404,6 +392,7 @@ $arr = $data["data"];
     }
 
     fetch_data();
+
 
     $(document).on("click", ".page-item", function() {
         let page = $(this).attr("page-id");

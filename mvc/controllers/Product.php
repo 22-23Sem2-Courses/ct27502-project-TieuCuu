@@ -1,9 +1,10 @@
 <?php
 class Product extends Controller
 {
-
+    public $ProductModel;
     function __construct()
     {
+        $this->ProductModel = $this->model("ProductModel");
     }
 
     function SayHi()
@@ -17,7 +18,18 @@ class Product extends Controller
 
     public function Detail($id)
     {
-        //echo "ok" . $id;
-        $this->view("master1", ["page" => "detail"]);
+        $ProductIDRegex = "/^SP0*[0-9]{3,}$/";
+        if (preg_match($ProductIDRegex, $id)) {
+            $data = json_decode($this->ProductModel->GetProductByID($id));
+            if (!empty($data)) {
+                $this->view("master2", ["page" => "detail", "data" => $data]);
+            } else {
+                $this->view("master2", ["page" => "404", "message" => "The product was not found."]);
+                exit();
+            }
+        } else {
+            $this->view("master2", ["page" => "404", "message" => "The product was not found."]);
+            exit();
+        }
     }
 }

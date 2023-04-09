@@ -1,4 +1,9 @@
 <?php
+// var_dump($data["products"]);
+// $products = $data["products"];
+// foreach ($products as $product) {
+//     print_r($product["ProductName"]);
+// }
 
 ?>
 
@@ -52,7 +57,38 @@
                 </div>
                 <!-- Recommend product list -->
                 <div class="row row-cols-md-3 row-cols-1 justify-content-evenly">
-                    <div class="col" style="width: 250px;">
+                    <?php
+                    $products = $data["products"];
+                    foreach ($products as $product) { ?>
+
+                        <div class="col" style="width: 250px;">
+                            <div class="card mb-4">
+                                <a href="<?php echo BASE_URL_PATH . "Product/Detail/" . $product["ProductID"] ?>" class="text-reset text-decoration-none">
+                                    <img src="<?php echo BASE_URL_PATH . "assets/img/products/" . $product["ProductImg"] ?>" class="card-img-top img-fluid recommend-img" alt="...">
+                                    <div class="recommend-heart ">
+                                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: #fff; stroke-width: 2; overflow: visible;">
+                                            <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="card-body position-relative">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <h5 class="card-title mb-0"><?php echo $product["ProductName"] ?></h5>
+                                            <span class="fw-bolder"><?php echo "$" . $product["ProductPrice"] ?></span>
+                                        </div>
+                                        <p class="card-text"><?php echo $product["ProductShortDesc"] ?></p>
+                                        <div>
+                                            <button type="button" class="btn btn-dark cart-btn rounded-circle d-flex justify-content-center align-items-center text-center position-absolute top-100 start-50 translate-middle" style="height: 36px; width: 36px;">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    <?php } ?>
+                    <!-- <div class="col" style="width: 250px;">
                         <div class="card mb-4">
                             <a href="<?php echo BASE_URL_PATH . "Product/Detail/111" ?>" class="text-reset text-decoration-none">
                                 <img src="<?php echo BASE_URL_PATH . "assets/img/strawberry.png" ?>" class="card-img-top img-fluid recommend-img" alt="...">
@@ -105,34 +141,7 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
-                    <div class="col" style="width: 250px;">
-                        <div class="card mb-4">
-                            <a href="<?php echo BASE_URL_PATH . "Product/Detail/111" ?>" class="text-reset text-decoration-none">
-                                <img src="<?php echo BASE_URL_PATH . "assets/img/strawberry.png" ?>" class="card-img-top img-fluid recommend-img" alt="...">
-                                <div class="recommend-heart heart-active">
-                                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: #fff; stroke-width: 2; overflow: visible;">
-                                        <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div class="card-body position-relative">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <h5 class="card-title mb-0">Strawberry</h5>
-                                        <span class="fw-bolder">$1.6</span>
-                                    </div>
-                                    <p class="card-text">Strawberries, sweet, juicy and packed with Vitamin C,
-                                        antioxidants and fiber. Available all year round.
-                                    </p>
-                                    <div>
-                                        <button type="button" class="btn btn-dark cart-btn rounded-circle d-flex justify-content-center align-items-center text-center position-absolute top-100 start-50 translate-middle" style="height: 36px; width: 36px;">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -214,27 +223,27 @@
                     <div class="row">
                         <div class="col">
                             <nav class="nav navbar-nav">
-                                <a class="nav-link active" data-bs-toggle="tab" aria-current="page" href="#">
+                                <a class="nav-link active" category="all" data-bs-toggle="tab" aria-current="page" href="#">
                                     <i class="fa-solid fa-caret-right"></i>
                                     <span>All Products</span>
                                 </a>
-                                <a class="nav-link" data-bs-toggle="tab" aria-current="page" href="#">
+                                <a class="nav-link" category="f" data-bs-toggle="tab" aria-current="page" href="#">
                                     <i class="fa-solid fa-caret-right"></i>
                                     <span>Fruits</span>
                                 </a>
-                                <a class="nav-link " data-bs-toggle="tab" aria-current="page" href="#">
+                                <a class="nav-link " category="v" data-bs-toggle="tab" aria-current="page" href="#">
                                     <i class="fa-solid fa-caret-right"></i>
                                     <span>Vegetables</span>
                                 </a>
-                                <a class="nav-link " data-bs-toggle="tab" aria-current="page" href="#">
+                                <a class="nav-link " category="m" data-bs-toggle="tab" aria-current="page" href="#">
                                     <i class="fa-solid fa-caret-right"></i>
                                     <span>Meat</span>
                                 </a>
-                                <a class="nav-link " data-bs-toggle="tab" aria-current="page" href="#">
+                                <a class="nav-link " category="d" data-bs-toggle="tab" aria-current="page" href="#">
                                     <i class="fa-solid fa-caret-right"></i>
                                     <span>Dairy</span>
                                 </a>
-                                <a class="nav-link " data-bs-toggle="tab" aria-current="page" href="#">
+                                <a class="nav-link " category="dr" data-bs-toggle="tab" aria-current="page" href="#">
                                     <i class="fa-solid fa-caret-right"></i>
                                     <span>Drink</span>
                                 </a>
@@ -376,8 +385,9 @@
 
 <script>
     function fetch_data(page) {
+
         $.ajax({
-            url: "Ajax/Pagination",
+            url: `Ajax/Pagination/${localStorage.getItem("category") ?? "All"}`,
             method: "POST",
             dataType: 'json',
             data: {
@@ -387,17 +397,22 @@
 
                 $("#pull-data").html(data.html1);
                 $("#pull-page").html(data.html2);
+
             }
         })
     }
-
+    localStorage.removeItem("category");
     fetch_data();
 
 
     $(document).on("click", ".page-item", function() {
-        let page = $(this).attr("page-id");
-
+        let page = $(this).attr("page-id")
         fetch_data(page);
+    })
+
+    $('.product__category-container a.nav-link').on("click", function() {
+        localStorage.setItem("category", $(this).attr('category'));
+        fetch_data();
     })
 </script>
 

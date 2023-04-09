@@ -1,7 +1,7 @@
 <?php
 
-print_r($data["data"][0]->ProductName);
-print_r($data["data"][0]->ProductImg);
+// print_r($data["data"][0]->ProductName);
+// print_r($data["data"][0]->ProductImg);
 ?>
 
 <div class="page-product-container my-3">
@@ -30,15 +30,17 @@ print_r($data["data"][0]->ProductImg);
                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             </div>
                             <div class="carousel-inner rounded">
+
                                 <div class="carousel-item active" data-bs-interval="4000">
                                     <img src="<?php echo BASE_URL_PATH . "assets/img/products/" . $data["data"][0]->ProductImg ?>" class="d-block w-100 " alt="product image">
                                 </div>
-                                <!-- <div class="carousel-item" data-bs-interval="3000">
-                                    <img src="<?php echo BASE_URL_PATH . "assets/img/grape.png" ?>" class="d-block w-100" alt="product image">
+                                <div class="carousel-item" data-bs-interval="3000">
+                                    <img src="<?php echo BASE_URL_PATH . "assets/img/products/" . $data["data"][0]->ProductImg ?>" class="d-block w-100 " alt="product image">
                                 </div>
                                 <div class="carousel-item" data-bs-interval="3000">
-                                    <img src="<?php echo BASE_URL_PATH . "assets/img/strawberry.png" ?>" class="d-block w-100" alt="product image">
-                                </div> -->
+                                    <img src="<?php echo BASE_URL_PATH . "assets/img/products/" . $data["data"][0]->ProductImg ?>" class="d-block w-100 " alt="product image">
+                                </div>
+
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#product-carousel" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -69,15 +71,14 @@ print_r($data["data"][0]->ProductImg);
                         </div>
 
                         <p class="product__detail-desc">
-                            Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem!
-                            Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.
+                            <?php echo $data["data"][0]->ProductShortDesc ?>
                         </p>
 
                         <div class="d-flex flex-column">
                             <div class="product__detail-boxprice d-flex align-items-center mb-4">
                                 <h4 class="me-3">Price:</h4>
                                 <div class="d-flex align-items-center justify-content-around">
-                                    <strong><?php echo "$" . $data["data"][0]->ProductPrice; ?></strong>
+                                    <strong><?php echo "$" . round($data["data"][0]->ProductPrice, 1); ?></strong>
                                     <span><?php echo "$" . intval($data["data"][0]->ProductPrice * 1.5); ?></span>
                                 </div>
                             </div>
@@ -100,7 +101,7 @@ print_r($data["data"][0]->ProductImg);
                             </div>
                             <div class="d-flex align-items-center mb-4">
                                 <h4 class="me-3">Quantity:</h4>
-                                <input name="quantity" class="shadow-none" type="number" value="1" min="1" max="50" step="1" />
+                                <input name="quantity" class="shadow-none" type="number" value="1" min="1" max="<?php echo $data["data"][0]->ProductQuantity; ?>" <?php if ($data["data"][0]->ProductQuantity == 0) echo 'disabled' ?> step="1" />
                             </div>
                             <div class="d-flex align-items-center">
                                 <button class="btn dark-green-btn dark-green-btn--lg dark-green-btn--option shadow-none rounded-1 me-3">
@@ -131,10 +132,7 @@ print_r($data["data"][0]->ProductImg);
                     Description</h1>
                 <div class="product__content-info">
                     <div class="product__editor-wrap">
-                        Red watermelon is a fruit rich in water and essential vitamins and minerals, especially
-                        low in calories and fat. Watermelon is considered a substitute for regular drinking
-                        water. Watermelon is sweet when it has a dark green rind, withered stem, and yellow area
-                        on the tail.
+                        <?php echo $data["data"][0]->ProductInfo ?>
                     </div>
                 </div>
             </div>

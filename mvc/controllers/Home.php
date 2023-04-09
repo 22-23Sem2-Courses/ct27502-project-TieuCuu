@@ -13,8 +13,10 @@ class Home extends Controller
 
     function SayHi()
     {
+        $limitItems = 3;
+        $recommendProducts = $this->ProductModel->GetRows("SELECT * FROM `products` ORDER BY ProductQuantity DESC LIMIT $limitItems");
 
-        $this->view("master1", ["page" => "home"]);
+        $this->view("master1", ["page" => "home", "products" => $recommendProducts]);
     }
 
     function Sum($a, $b)

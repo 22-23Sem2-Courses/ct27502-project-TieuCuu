@@ -21,6 +21,7 @@ class ProductModel extends ConnectDB
         return json_encode(false);
     }
 
+
     //getting all rows
     public function GetRows($query, $params = [])
     {
@@ -34,7 +35,7 @@ class ProductModel extends ConnectDB
         }
     }
 
-    //getting one rows
+    //getting one row
     public function GetRow($query, $params = [])
     {
         try {
@@ -47,11 +48,11 @@ class ProductModel extends ConnectDB
         }
     }
 
-    public function GetSum($query)
+    public function GetSum($query, $params = [])
     {
         try {
             $stmt = $this->PDO->prepare($query);
-            $stmt->execute();
+            $stmt->execute($params);
 
             return intval($stmt->fetchColumn());
         } catch (PDOException $e) {

@@ -303,6 +303,7 @@
     position: absolute;
     top: 16px;
     right: 16px;
+    padding: 8px;
 }
 
 .recommend-heart.heart-active svg {
@@ -545,6 +546,12 @@
 .product__detail-preview {
     height: 452px !important;
     width: 452px !important;
+    object-fit: cover;
+}
+
+.product__detail-preview img {
+    width: 452px !important;
+    height: 452px !important;
     object-fit: cover;
 }
 

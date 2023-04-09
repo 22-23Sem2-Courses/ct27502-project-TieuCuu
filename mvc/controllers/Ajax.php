@@ -8,17 +8,11 @@ class Ajax extends Controller
         $this->ProductModel = $this->model("ProductModel");
     }
 
-    //Ajax, gọi hàm checkUserName bên UserModel trả về boolean
-    public function checkUserName()
-    {
-        // $username = $_POST['username'];
-        // echo $this->UserModel->checkUserName($username);
-    }
-
-    public function Pagination()
+    public function Pagination($cate)
     {
         $limit = 8;
         $page = 0;
+        $category = '';
 
         $display = "";
 
@@ -28,16 +22,21 @@ class Ajax extends Controller
             $page = 1;
         }
 
+        if (!empty($cate)) {
+            $category = ucfirst($cate);
+        } else {
+            $category = 'All';
+        }
         $start_from = ($page - 1) * $limit;
 
-        $products = $this->ProductModel->GetRows("SELECT * FROM PRODUCTS ORDER BY ID LIMIT $start_from, $limit");
+        if ($category == 'All') {
+            $products = $this->ProductModel->GetRows("SELECT * FROM PRODUCTS ORDER BY ID LIMIT $start_from, $limit");
+            $count_products = $this->ProductModel->GetSum("SELECT COUNT(id) FROM PRODUCTS");
+        } else {
+            $products = $this->ProductModel->GetRows("SELECT * FROM PRODUCTS WHERE CATEGORYID = ? ORDER BY ID LIMIT $start_from, $limit", [$category]);
+            $count_products = $this->ProductModel->GetSum("SELECT COUNT(id) FROM PRODUCTS WHERE CATEGORYID = ?", [$category]);
+        }
 
-        // var_dump($products);
-        // exit();
-
-        $count_products = $this->ProductModel->GetSum("SELECT COUNT(id) FROM PRODUCTS");
-        // echo $count_products;
-        // exit();
 
         if ($count_products > 0) {
             foreach ($products as $product) {
@@ -59,7 +58,7 @@ class Ajax extends Controller
                             </div>
                             <div class="text-center">
                                 <p>
-                                    <span class="fw-bold">' . $product['ProductPrice'] . '</span>
+                                    <span class="fw-bold">$' . $product['ProductPrice'] . '</span>
                                     /
                                     <span class="text-muted">500g</span>
                                 </p>
@@ -90,8 +89,11 @@ class Ajax extends Controller
                 <div>Oops! There is no data found!</div>
             ';
         }
-
-        $total_rows = $this->ProductModel->GetSum("SELECT COUNT(id) FROM PRODUCTS");
+        if ($category == 'All') {
+            $total_rows = $this->ProductModel->GetSum("SELECT COUNT(id) FROM PRODUCTS");
+        } else {
+            $total_rows = $this->ProductModel->GetSum("SELECT COUNT(id) FROM PRODUCTS  WHERE CATEGORYID = ?", [$category]);
+        }
 
         $total_pages = ceil(($total_rows / $limit));
 
@@ -128,8 +130,7 @@ class Ajax extends Controller
 
         $return['html1'] = $html1;
         $return['html2'] = $html2;
-        //echo $display;
-        // echo $displayPage;
+
         echo json_encode($return);
         exit;
     }

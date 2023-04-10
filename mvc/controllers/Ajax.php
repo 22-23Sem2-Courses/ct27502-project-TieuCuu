@@ -98,24 +98,68 @@ class Ajax extends Controller
 
         $displayPage = '';
 
-        if ($page > 1) {
-            $previous = $page - 1;
+        // if ($page > 1) {
+        //     $previous = $page - 1;
 
+        //     $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1" page-id="1" style="width: 36px; height: 36px;"><span style="transform: translateY(-2%);">&laquo;</span></li>';
+        //     //$displayPage .= '<li class="page-item" page-id="' . $previous . '"></li>';
+        // }
+
+        // for ($i = 1; $i <= $total_pages; $i++) {
+        //     $active_class = "";
+        //     if ($i == $page) {
+        //         $active_class = "active";
+        //     }
+        //     $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1 ' . $active_class . '" page-id="' . $i . '" style="width: 36px; height: 36px;"><span>' . $i . '</span></li>';
+        // }
+
+        // if ($page < $total_pages) {
+        //     $page++;
+        //     // $displayPage .= '<li class="page-item" page-id="' . $page . '">';
+        //     $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1" page-id="' . $total_pages . '" style="width: 36px; height: 36px;"><span style="transform: translateY(-2%);">&raquo;</span></li>';
+        // }
+
+        $beforePages = $page - 1;
+        $afterPages = $page + 1;
+
+        if ($page > 1) {
             $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1" page-id="1" style="width: 36px; height: 36px;"><span style="transform: translateY(-2%);">&laquo;</span></li>';
-            //$displayPage .= '<li class="page-item" page-id="' . $previous . '"></li>';
         }
 
-        for ($i = 1; $i <= $total_pages; $i++) {
+        if ($page > 2) {
+            $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1" page-id="1" style="width: 36px; height: 36px;"><span>1</span></li>';
+            if ($page > 3) {
+                $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1" style="width: 36px; height: 36px;"><span>...</span></li>';
+            }
+        }
+
+        for ($i = $beforePages; $i <= $afterPages; $i++) {
+
+            if ($i > $total_pages) {
+                continue;
+            }
+
+            if ($i == 0) {
+                $i += 1;
+            }
+
             $active_class = "";
+
             if ($i == $page) {
                 $active_class = "active";
             }
+
             $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1 ' . $active_class . '" page-id="' . $i . '" style="width: 36px; height: 36px;"><span>' . $i . '</span></li>';
         }
 
+        if ($page < $total_pages - 1) {
+            if ($page < $total_pages - 2) {
+                $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1" style="width: 36px; height: 36px;"><span>...</span></li>';
+            }
+            $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1" page-id="' . $total_pages . '" style="width: 36px; height: 36px;"><span>' . $total_pages . '</span></li>';
+        }
+
         if ($page < $total_pages) {
-            $page++;
-            // $displayPage .= '<li class="page-item" page-id="' . $page . '">';
             $displayPage .= '<li class="page-item btn border rounded-circle d-flex justify-content-center align-items-center mx-1" page-id="' . $total_pages . '" style="width: 36px; height: 36px;"><span style="transform: translateY(-2%);">&raquo;</span></li>';
         }
 

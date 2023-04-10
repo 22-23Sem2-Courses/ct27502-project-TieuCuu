@@ -9,7 +9,7 @@ function redirect($location)
     exit();
 }
 
-function adminLogin()
+function checkAdminLogin()
 {
     if (isset($_SESSION['role']) && $_SESSION['role'] == 0) {
         return true;
@@ -17,13 +17,6 @@ function adminLogin()
     return false;
 }
 
-function userLogin()
-{
-    if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
-        return true;
-    }
-    return false;
-}
 
 function testPhrase($userInput)
 {
@@ -51,7 +44,7 @@ function showMessage($type, $messages)
     if ($type == 'info')
         $key = 'primary';
 
-    $html = '<div class="toast-container position-absolute top-0 end-0 p-3" id="">
+    $html = '<div class="toast-container position-fixed top-0 end-0 p-3" id="" style="z-index:999999">
                 <div class="toast show align-items-center text-white bg-' . $key . ' border-0" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
                         <div class="toast-body">' . $messages . '</div>

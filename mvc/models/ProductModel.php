@@ -21,6 +21,21 @@ class ProductModel extends ConnectDB
         return json_encode(false);
     }
 
+    public function DeleteProduct($query, $params = [])
+    {
+        try {
+            $stmt = $this->PDO->prepare($query);
+            $stmt->execute($params);
+            if ($stmt->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
 
     //getting all rows
     public function GetRows($query, $params = [])
@@ -58,28 +73,5 @@ class ProductModel extends ConnectDB
         } catch (PDOException $e) {
             throw new Exception($e->getMessage());
         }
-    }
-
-    public function GetRecommendProduct()
-    {
-    }
-
-
-    public function AddProduct()
-    {
-    }
-
-    public function EditProduct()
-    {
-    }
-
-    public function DeleteProduct()
-    {
-    }
-
-    //ví dụ nhận dữ liệu
-    public function Sum($a, $b)
-    {
-        return $a + $b;
     }
 }

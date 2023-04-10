@@ -185,7 +185,7 @@
                                 </li>
                                 <?php if (isset($_SESSION["role"]) && $_SESSION["role"] == 0) { ?>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="<?php echo BASE_URL_PATH . "Admin" ?>">
                                             <i class="fa-solid fa-database" style="color: #1c9662;"></i>
                                             <span class="ps-1">Dashboard</span>
                                         </a>

@@ -25,13 +25,18 @@ class Admin extends Controller
             $productID = $_POST['product_id'];
 
             if ($this->ProductModel->DeleteProduct("DELETE FROM PRODUCTS WHERE PRODUCTID = ?", [$productID])) {
-                $result = showMessage('success', 'Product has been deleted successfully.');
+                $result = showMessage('success', 'Product has been deleted successfully!');
             } else {
-                $result = showMessage('error', 'Failed to delete product. Please try again later.');
+                $result = showMessage('error', 'Failed to delete product. Please try again later!');
             }
         }
-        
+
         $products = $this->ProductModel->getRows("SELECT * FROM PRODUCTS");
         $this->view("master3", ["page" => "dashboard", "products" => $products, "result" => $result]);
+    }
+
+    public function EditProduct($id)
+    {
+        $this->view("master3", ["page" => "edit_Product"]);
     }
 }

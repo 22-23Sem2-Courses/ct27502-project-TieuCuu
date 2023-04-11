@@ -39,7 +39,10 @@ if (!checkAdminLogin()) {
             /* block images */
             max-width: 80%;
             margin: 20px auto;
-            border-radius: 5px;
+        }
+
+        .ck-content img {
+            border-radius: 5px !important;
         }
     </style>
 </head>

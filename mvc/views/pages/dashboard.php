@@ -1,7 +1,5 @@
 <?php
-if (!checkAdminLogin()) {
-    redirect('ErrorPage');
-}
+
 
 // print_r($data["products"][0]['ProductInfo']);
 ?>

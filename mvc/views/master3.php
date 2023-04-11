@@ -1,3 +1,9 @@
+<?php
+if (!checkAdminLogin()) {
+    redirect('ErrorPage');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +23,25 @@
     <script src="<?php echo BASE_URL_PATH . "assets/bootstrap5/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js" ?>"></script>
     <script src="<?php echo BASE_URL_PATH . "assets/jquery/jquery-3.6.3.min.js" ?>"></script>
     <script src="<?php echo BASE_URL_PATH . "assets/jquery/jquery-ui.min.js" ?>"></script>
+    <style>
+        #container {
+            width: 1000px;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
 
+        .ck-editor__editable[role="textbox"] {
+            /* editing area */
+            min-height: 400px;
+        }
+
+        .ck-content .image {
+            /* block images */
+            max-width: 80%;
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>

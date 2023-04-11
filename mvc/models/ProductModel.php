@@ -15,8 +15,8 @@ class ProductModel extends ConnectDB
         $sql = "SELECT * FROM PRODUCTS WHERE ProductID = ?";
         $stmt = $this->PDO->prepare($sql);
         if ($stmt->execute([$id]) && $stmt->rowCount() > 0) {
-            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return json_encode($rows);
+            $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return json_encode($row);
         }
         return json_encode(false);
     }

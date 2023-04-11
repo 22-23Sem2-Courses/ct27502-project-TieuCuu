@@ -37,6 +37,24 @@ class Admin extends Controller
 
     public function EditProduct($id)
     {
-        $this->view("master3", ["page" => "edit_Product"]);
+        $row = json_decode($this->ProductModel->GetProductByID($id));
+
+        $data = [
+            'row' => '',
+            'resultError' => ''
+        ];
+
+
+        if ($row) {
+            $data['row'] = $row;
+        } else {
+            $data['resultError'] = showMessage('error', 'Oops! Product not found!');
+        }
+
+        $this->view("master3", ["page" => "edit_Product", "data" => $data]);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_update'])) {
+            echo $_POST['information'];
+        }
     }
 }

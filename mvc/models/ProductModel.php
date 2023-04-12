@@ -36,6 +36,21 @@ class ProductModel extends ConnectDB
         }
     }
 
+    public function EditProduct($query, $params = [])
+    {
+        try {
+            $stmt = $this->PDO->prepare($query);
+            $stmt->execute($params);
+            if ($stmt->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
 
     //getting all rows
     public function GetRows($query, $params = [])

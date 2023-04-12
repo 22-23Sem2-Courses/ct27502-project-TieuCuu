@@ -1,4 +1,7 @@
 <?php
+
+use Dotenv\Parser\Value;
+
 class Admin extends Controller
 {
     public $ProductModel;
@@ -25,9 +28,9 @@ class Admin extends Controller
             $productID = $_POST['product_id'];
 
             if ($this->ProductModel->DeleteProduct("DELETE FROM PRODUCTS WHERE PRODUCTID = ?", [$productID])) {
-                $result = showMessage('success', 'Product has been deleted successfully!');
+                $result = stackMessageWrapper([showMessage('success', 'Product has been deleted successfully!')]);
             } else {
-                $result = showMessage('error', 'Failed to delete product. Please try again later!');
+                $result = stackMessageWrapper([showMessage('error', 'Failed to delete product. Please try again later!')]);
             }
         }
 
@@ -35,9 +38,12 @@ class Admin extends Controller
         $this->view("master3", ["page" => "dashboard", "products" => $products, "result" => $result]);
     }
 
+
     public function EditProduct($id)
     {
-        $row = json_decode($this->ProductModel->GetProductByID($id));
+        $productID = $id;
+
+        $row = json_decode($this->ProductModel->GetProductByID($productID));
         $categoryRows = $this->ProductModel->GetRows("SELECT CATEGORYID, CATEGORYNAME FROM CATEGORIES");
 
         $data = [
@@ -50,66 +56,121 @@ class Admin extends Controller
         if ($row) {
             $data['row'] = $row;
         } else {
-            $data['resultError'] = showMessage('error', 'Oops! Product not found!');
+            $data['resultError'] = stackMessageWrapper([showMessage('error', 'Oops! Product not found!')]);
         }
-
+        //show data into input fileds
         $this->view("master3", ["page" => "edit_Product", "data" => $data]);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_update'])) {
-            // echo $_POST['information'];
-            // echo $_POST['desc'];
-            var_dump($_FILES['fileUpload']);
-            // echo $_POST['category'];
-            $productName = $_POST["name"];
 
-            //default route public/
-            $targetDir =  "assets/img/products/";
-
-            //basename return name of file
-            $targetFile = $targetDir . basename($_FILES["fileUpload"]["name"]);
-            $hasErrors = false;
-
-            //pathinfo return file path .jpg, .png
-            $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-            $extensions = array("jpeg", "jpg", "png", "gif");
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
 
-            // Check if image file is a actual image or fake image
-            $check = getimagesize($_FILES["fileUpload"]["tmp_name"]);
-            if ($check !== false) {
-                echo "File is an image - " . $check["mime"] . ". ";
-            } else {
-                echo "File is not an image.";
-                $hasErrors = true;
-            }
+            if (isset($_POST["name"]) && isset($_POST["price"]) && isset($_POST["category"]) && isset($_POST["quantity"]) && isset($_POST["desc"]) && isset($_POST["information"])) {
 
-            // Check if file already exists
-            if (file_exists($targetFile)) {
-                echo "Sorry, file already exists.";
-                $hasErrors = true;
-            } else {
-                echo "file ok";
-            }
+                //set default value in database
+                $name = $row[0]->ProductName;
+                $price = $row[0]->ProductPrice;
+                $category = $row[0]->CategoryID;
+                $quantity = $row[0]->ProductQuantity;
+                $desc = $row[0]->ProductShortDesc;
+                $info = $row[0]->ProductInfo;
+                $img = $row[0]->ProductImg;
 
-            // Check file size
-            if ($_FILES["fileUpload"]["size"] > 5000000) {
-                echo "Sorry, your file is too large.";
-                $hasErrors = true;
-            }
+                $errors = [];
 
-            // Allow certain file formats
-            if (!in_array($imageFileType, $extensions)) {
-                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                $hasErrors = true;
-            }
+                if (!empty($_POST["name"])) {
+                    $name = $_POST["name"];
+                }
 
-            if ($hasErrors) {
-                echo "Sorry, your file was not uploaded.";
-            } else {
-                if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $targetFile)) {
-                    echo "The file has been uploaded. <br/>";
+                if (!empty($_POST["price"])) {
+                    $price = $_POST["price"];
+                }
+
+                if (!empty($_POST["category"])) {
+                    $category = ucfirst($_POST["category"]);
+                }
+
+                //quantity can be 0
+                if (!empty($_POST["quantity"] || $_POST["quantity"] == 0)) {
+                    $quantity = $_POST["quantity"];
+                }
+
+                if (!empty($_POST["desc"])) {
+                    $desc = $_POST["desc"];
+                }
+
+                if (!empty($_POST["information"])) {
+                    $info = $_POST["information"];
+                }
+
+                //if file empty $_FILES array return having (error = 4) || (size = 0 & error = 0)
+                if ($_FILES["fileUpload"]["error"] !== 4 || ($_FILES["fileUpload"]["size"] !== 0 && $_FILES["fileUpload"]["error"] !== 0)) {
+
+                    //default route public/
+                    $targetDir =  "assets/img/products/";
+
+                    //basename return name of file
+                    $targetFile = $targetDir . basename($_FILES["fileUpload"]["name"]);
+                    $hasErrors = false;
+
+
+                    //pathinfo return file path .jpg, .png
+                    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                    $extensions = array("jpeg", "jpg", "png", "gif");
+
+                    // Check if image file is a actual image or fake image
+                    $check = getimagesize($_FILES["fileUpload"]["tmp_name"]);
+                    if ($check === false) {
+                        array_push($errors, showMessage("error", "File is not an image."));
+                        $hasErrors = true;
+                    }
+
+                    // Check if file already exists
+                    if (file_exists($targetFile)) {
+                        array_push($errors, showMessage("error", "Sorry, file already exists."));
+                        $hasErrors = true;
+                    } else {
+                        echo "file ok";
+                    }
+
+                    // Check file size
+                    if ($_FILES["fileUpload"]["size"] > 5000000) {
+                        array_push($errors, showMessage("error", "Sorry, your file is too large."));
+                        $hasErrors = true;
+                    }
+
+                    // Allow certain file formats
+                    if (!in_array($imageFileType, $extensions)) {
+                        array_push($errors, showMessage("error", "Sorry, only JPG, JPEG, PNG & GIF files are allowed."));
+                        $hasErrors = true;
+                    }
+
+                    if ($hasErrors) {
+                        array_push($errors, showMessage("error", "Sorry, your file was not uploaded."));
+                    } else {
+                        if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $targetFile)) {
+                            $img = basename($_FILES["fileUpload"]["name"]);
+                        } else {
+                            array_push($errors, showMessage("error", "Sorry, there was an error uploading your file."));
+                        }
+                    }
+                }
+
+                $editResult = $this->ProductModel->EditProduct("
+                    UPDATE PRODUCTS SET PRODUCTNAME = ?, 
+                                        PRODUCTPRICE = ?, 
+                                        CATEGORYID = ?, 
+                                        PRODUCTQUANTITY = ?, 
+                                        PRODUCTSHORTDESC = ?, 
+                                        PRODUCTINFO = ?, 
+                                        PRODUCTIMG = ? WHERE PRODUCTID = ?", [$name, $price, $category, $quantity, $desc, $info, $img, $productID]);
+                if ($editResult) {
+                    echo stackMessageWrapper([showMessage("success", "Update successful! The changes have been saved to the database.")]);
+                    echo '<script>window.location.assign("http://ct275.test/Admin");</script>';
                 } else {
-                    echo "Sorry, there was an error uploading your file.";
+                    array_push($errors, showMessage("error", "Failed to update the record. Please try again later."));
+                    echo stackMessageWrapper($errors);
                 }
             }
         }

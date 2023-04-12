@@ -14,7 +14,7 @@ class Home extends Controller
     function SayHi()
     {
         $limitItems = 3;
-        $recommendProducts = $this->ProductModel->GetRows("SELECT * FROM `products` ORDER BY ProductQuantity DESC LIMIT $limitItems");
+        $recommendProducts = $this->ProductModel->GetRows("SELECT * FROM `products` ORDER BY Rand() LIMIT $limitItems");
 
         $this->view("master1", ["page" => "home", "products" => $recommendProducts]);
     }

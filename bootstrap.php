@@ -44,7 +44,7 @@ function showMessage($type, $messages)
     if ($type == 'info')
         $key = 'primary';
 
-    $html = '<div class="toast-container position-fixed top-0 end-0 p-3" id="" style="z-index:999999">
+    $html = '<div class="mb-3" >
                 <div class="toast show align-items-center text-white bg-' . $key . ' border-0" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
                         <div class="toast-body">' . $messages . '</div>
@@ -52,7 +52,21 @@ function showMessage($type, $messages)
                     </div>
                 </div>
             </div>
-            <script>$(".toast").fadeOut(5000);</script>';
+            ';
 
+    return $html;
+}
+
+function stackMessageWrapper($messages = [])
+{
+    $html = '<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:999999"> ';
+    foreach ($messages as $message) {
+        $html .= $message;
+    }
+    $html .= '</div>';
+    $html .= '<script>$(".toast").each(function(index) {
+                    $(this).delay(1000 * (index + 1)).fadeOut(); 
+            });
+            </script>';
     return $html;
 }

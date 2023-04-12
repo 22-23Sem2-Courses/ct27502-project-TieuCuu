@@ -71,7 +71,7 @@
                         </div>
 
                         <p class="product__detail-desc">
-                            <?php echo $data["data"][0]->ProductShortDesc ?>
+                            <?php echo htmlspecialchars_decode(stripslashes($data["data"][0]->ProductShortDesc)) ?>
                         </p>
 
                         <div class="d-flex flex-column">
@@ -132,7 +132,7 @@
                     Description</h1>
                 <div class="product__content-info">
                     <div class="product__editor-wrap">
-                        <?php echo $data["data"][0]->ProductInfo ?>
+                        <?php echo htmlspecialchars_decode(stripslashes($data["data"][0]->ProductInfo)) ?>
                     </div>
                 </div>
             </div>

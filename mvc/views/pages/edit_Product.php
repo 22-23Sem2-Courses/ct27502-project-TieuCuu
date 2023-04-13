@@ -26,7 +26,7 @@ if (empty($data["data"]["resultError"])) {
 <div>
     <h1 class="mt-4 pb-2 border-bottom">Products Table</h1>
 
-    <form action="" id="register" method="POST" enctype="multipart/form-data" class="row g-3">
+    <form action="" id="edit" method="POST" enctype="multipart/form-data" class="row g-3">
         <div class="col-md-3">
             <label for="name" class="form-label fw-bold">Name</label>
             <input type="text" name="name" value="<?php echo $ProductName ?? $nameErr = 'Error' ?>" id="name" class="form-control form-control input-color " required>
@@ -102,6 +102,8 @@ if (empty($data["data"]["resultError"])) {
         </div>
     </form>
 
+    <div id="message"></div>
+
 </div>
 
 <script src="http://ct275.test/assets/ckeditor5/ckeditor.js"></script>
@@ -136,4 +138,34 @@ if (empty($data["data"]["resultError"])) {
             img.prop('src', URL.createObjectURL(e.target.files[0]));
         });
     })
+
+    console.log($('#edit'))
+
+    $("#edit").submit(function(e) {
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        data = $('#edit').serialize();
+        console.log(data);
+
+        //need this to upload file with ajax
+        var form = $('#edit')[0];
+        var formData = new FormData(form);
+
+        $.ajax({
+            url: 'http://ct275.test/Ajax/EditProduct/<?php echo $ProductID ?>',
+            method: "POST",
+            data: formData, // serializes the form's elements.
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                console.log('ok');
+                console.log(data)
+                $('#message').html(data);
+            },
+            error: function(req, err) {
+                console.log(err);
+            }
+        });
+
+    });
 </script>

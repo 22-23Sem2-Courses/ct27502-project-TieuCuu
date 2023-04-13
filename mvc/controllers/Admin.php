@@ -181,4 +181,13 @@ class Admin extends Controller
         //     }
         // }
     }
+
+    public function NewProduct()
+    {
+        $categoryRows = $this->ProductModel->GetRows("SELECT CATEGORYID, CATEGORYNAME FROM CATEGORIES");
+
+        $data = ['categoryRows' => $categoryRows];
+
+        $this->view("master3", ["page" => "add_Product", "data" => $data]);
+    }
 }

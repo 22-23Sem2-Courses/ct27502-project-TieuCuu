@@ -8,7 +8,7 @@
     <h1 class="mt-4 pb-2 border-bottom">Products Table</h1>
 
     <div class="mt-5 mb-3 d-flex justify-content-end">
-        <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add</button>
+        <a href="<?php echo BASE_URL_PATH . 'Admin/NewProduct' ?>" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add</a>
     </div>
 
     <div class="card mb-4">

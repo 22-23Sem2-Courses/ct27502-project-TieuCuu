@@ -302,4 +302,14 @@ class Ajax extends Controller
             }
         }
     }
+
+    public function AddProduct()
+    {
+        echo $_POST["information"];
+        //print_r($_FILES["fileUpload"]);
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        $errors = [];
+    }
 }

@@ -44,6 +44,10 @@ if (!checkAdminLogin()) {
         .ck-content img {
             border-radius: 5px !important;
         }
+
+        #choose-file label {
+            cursor: pointer;
+        }
     </style>
 </head>
 

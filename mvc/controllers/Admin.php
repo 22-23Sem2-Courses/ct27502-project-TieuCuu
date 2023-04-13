@@ -39,7 +39,7 @@ class Admin extends Controller
     }
 
 
-    public function EditProduct($id)
+    public function Product($id)
     {
         $productID = $id;
 

@@ -56,7 +56,7 @@
                             <td><?php echo $product["ProductPrice"] ?? 'Error' ?></td>
                             <td><?php echo $product["ProductQuantity"] ?? 'Error' ?></td>
                             <td>
-                                <a href="<?php echo BASE_URL_PATH . "Admin/EditProduct/" . $product["ProductID"] ?? 'false' ?>" class="btn btn-primary btn-sm">
+                                <a href="<?php echo BASE_URL_PATH . "Admin/Product/" . $product["ProductID"] ?? 'false' ?>" class="btn btn-primary btn-sm">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                                 <form action="/Admin/DeleteProduct" method="POST" class="d-inline-block">

@@ -110,13 +110,13 @@ class Signup extends Controller
                 $data['confirmPassword'] = '';
 
                 if (json_decode($this->UserModel->createNewUser($data))) {
-                    $result = showMessage('success', 'Welcome back! You have successfully signed up.');
+                    $result = stackMessageWrapper([showMessage('success', 'Welcome back! You have successfully signed up.')]);
                     $this->view('master2', ['page' => 'signin', 'result' => $result]);
                 } else {
-                    $result = showMessage('error', 'Oops something went wrong!');
+                    $result = stackMessageWrapper([showMessage('error', 'Oops something went wrong!')]);
                 }
             } else {
-                $result = showMessage('error', 'Please correct the highlighted fields and try again.');
+                $result = stackMessageWrapper([showMessage('error', 'Please correct the highlighted fields and try again.')]);
             }
         }
 

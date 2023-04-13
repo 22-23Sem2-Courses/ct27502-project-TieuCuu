@@ -68,10 +68,10 @@ if (empty($data["data"]["resultError"])) {
                 <div class="mb-4 w-100">
                     <img id="img" src="<?php echo BASE_URL_PATH . "assets/img/products/" .  $ProductImg ?>" class="rounded" style="width: 100%; height: 200px; object-fit: cover;" />
                 </div>
-                <div class="">
+                <div class="" id="choose-file">
                     <div class="btn btn-dark rounded-pill btn-sm ">
                         <label class="form-label text-white m-1" for="fileUpload">Choose file</label>
-                        <input type="file" accept="image/jpeg, image/png" value="abc.jpg" name="fileUpload" id="fileUpload" class="form-control d-none" />
+                        <input type="file" accept="image/jpeg, image/png" name="fileUpload" id="fileUpload" class="form-control d-none" />
                     </div>
                 </div>
             </div>
@@ -139,13 +139,10 @@ if (empty($data["data"]["resultError"])) {
         });
     })
 
-    console.log($('#edit'))
 
     $("#edit").submit(function(e) {
 
         e.preventDefault(); // avoid to execute the actual submit of the form.
-        data = $('#edit').serialize();
-        console.log(data);
 
         //need this to upload file with ajax
         var form = $('#edit')[0];
@@ -158,8 +155,6 @@ if (empty($data["data"]["resultError"])) {
             processData: false,
             contentType: false,
             success: function(data) {
-                console.log('ok');
-                console.log(data)
                 $('#message').html(data);
             },
             error: function(req, err) {

@@ -47,7 +47,7 @@ function showMessage($type, $messages)
     $html = '<div class="mb-3" >
                 <div class="toast show align-items-center text-white bg-' . $key . ' border-0" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
-                        <div class="toast-body">' . $messages . '</div>
+                        <div class="toast-body" style="text-align: justify;">' . $messages . '</div>
                         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
                 </div>
@@ -64,9 +64,10 @@ function stackMessageWrapper($messages = [])
         $html .= $message;
     }
     $html .= '</div>';
-    $html .= '<script>$(".toast").each(function(index) {
-                    $(this).delay(1000 * (index + 1)).fadeOut(); 
-            });
+    $html .= '<script>
+                $(".toast").each(function(index) {
+                    $(this).delay(1500 * (index + 1)).fadeTo(3000, 0, "swing"); 
+                });
             </script>';
     return $html;
 }

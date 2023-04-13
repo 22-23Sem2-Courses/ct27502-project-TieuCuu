@@ -290,11 +290,14 @@ class Ajax extends Controller
                                         PRODUCTINFO = ?, 
                                         PRODUCTIMG = ? WHERE PRODUCTID = ?", [$name, $price, $category, $quantity, $desc, $info, $img, $productID]);
                 if ($editResult) {
-
                     echo stackMessageWrapper([showMessage("success", "Update successful! The changes have been saved to the database.")]);
                 } else {
-                    array_push($errors, showMessage("error", "Failed to update the record. Please try again later."));
-                    echo stackMessageWrapper($errors);
+                    if (empty($errors)) {
+                        echo stackMessageWrapper([showMessage("info", "Nothing was changed. Please make some changes and try again.")]);
+                    } else {
+                        array_push($errors, showMessage("error", "Failed to update the record. Please try again later."));
+                        echo stackMessageWrapper($errors);
+                    }
                 }
             }
         }

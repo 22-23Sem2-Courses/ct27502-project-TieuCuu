@@ -340,6 +340,8 @@
     transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
     cursor: pointer;
     border: none;
+    height: 285px;
+    width: 200px;
 }
 
 .product-container .product__list-block .card:hover {
@@ -348,8 +350,8 @@
 }
 
 .product__list-block img {
-    width: 245px !important;
-    height: 245px !important;
+    width: 100% !important;
+    height: 170px !important;
     object-fit: cover;
 }
 

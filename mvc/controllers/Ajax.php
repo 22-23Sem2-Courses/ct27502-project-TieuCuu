@@ -10,7 +10,7 @@ class Ajax extends Controller
 
     public function Pagination($category)
     {
-        $limit = 8;
+        $limit = 10;
         $page = 0;
 
         $display = "";
@@ -51,12 +51,12 @@ class Ajax extends Controller
                                 </path>
                             </svg>
                         </div>
-                        <div class="card-body position-relative">
+                        <div class="card-body px-2">
                             <div class="text-center mb-2">
-                                <div class="card-title mb-0 product-name">' . $product['ProductName'] . '</div>
+                                <div class="card-title mb-0 product-name tilt-font">' . $product['ProductName'] . '</div>
                             </div>
                             <div class="text-center">
-                                <p>
+                                <p class="m-0">
                                     <span class="fw-bold">$' . $product['ProductPrice'] . '</span>
                                     /
                                     <span class="text-muted">500g</span>
@@ -301,15 +301,5 @@ class Ajax extends Controller
                 }
             }
         }
-    }
-
-    public function AddProduct()
-    {
-        echo $_POST["information"];
-        //print_r($_FILES["fileUpload"]);
-        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        $errors = [];
     }
 }

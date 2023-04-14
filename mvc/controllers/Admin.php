@@ -188,6 +188,44 @@ class Admin extends Controller
 
         $data = ['categoryRows' => $categoryRows];
 
-        $this->view("master3", ["page" => "add_Product", "data" => $data]);
+
+
+        // echo $_POST["information"];
+        //print_r($_FILES["fileUpload"]);
+        $errors = [];
+        $nameErr = '';
+        // $priceErr = '';
+        // $cateErr = '';
+        // $quantityErr = '';
+        // $imgErr = '';
+        // $descErr = '';
+        // $infoErr = '';
+        $categoryRows = $this->ProductModel->GetRows("SELECT CATEGORYID, CATEGORYNAME FROM CATEGORIES");
+
+        $data = ['categoryRows' => $categoryRows];
+
+
+        if ($_SERVER["REQUEST_METHOD"] === 'POST' && isset($_POST["submit_add"])) {
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+
+            if (isset($_POST["name"]) && !empty($_POST["name"])) {
+                if (strlen($_POST["name"]) >= 25) {
+                    $name = $_POST["name"];
+                } else {
+                    $nameErr .= 'At least 25 characters long!';
+                }
+            }
+        }
+        $errors['nameError'] = $nameErr;
+        $errors['priceError'] = 'price err';
+
+        if (!array_filter($errors)) {
+            echo json_encode('thuc hien chen');
+        } else {
+            echo ('co loi');
+        }
+
+        $this->view("master3", ["page" => "add_Product", "data" => $data, "errors" => $errors]);
     }
 }

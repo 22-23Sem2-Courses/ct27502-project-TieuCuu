@@ -1,5 +1,12 @@
 <?php
-$categories = $data['data']['categoryRows'];
+
+if (isset($data['data']['categoryRows'])) {
+    $categories = $data['data']['categoryRows'];
+}
+
+// if (isset($data['errors'])) {
+//     print_r($data['errors']['nameError']);
+// };
 ?>
 
 <div>
@@ -9,14 +16,14 @@ $categories = $data['data']['categoryRows'];
         <div class="col-md-3">
             <label for="name" class="form-label fw-bold">Name</label>
             <input type="text" name="name" value="" id="name" class="form-control form-control input-color " required>
-            <div class="text-danger" style="font-size: 0.8rem;">
-
+            <div class="text-danger" id="nameErr" style="font-size: 0.8rem;">
+                <?php echo $data['errors']['nameError'] ?? "" ?>
             </div>
         </div>
         <div class="col-md-3">
             <label for="price" class="form-label fw-bold">Price</label>
             <input type="number" name="price" value="" id="price" min="0" step="0.01" class="form-control form-control input-color " required>
-            <div class="text-danger" style="font-size: 0.8rem;">
+            <div class="text-danger" id="priceErr" style="font-size: 0.8rem;">
 
             </div>
         </div>
@@ -30,14 +37,14 @@ $categories = $data['data']['categoryRows'];
                 <?php } ?>
             </select>
             <input type="text" name="category" value="<?php echo $categories[0]['CATEGORYID'] ?>" id="category" class="form-control form-control input-color " required>
-            <div class="text-danger" style="font-size: 0.8rem;">
+            <div class="text-danger" id="cateErr" style="font-size: 0.8rem;">
 
             </div>
         </div>
         <div class="col-md-3">
             <label for="quantity" class="form-label fw-bold">Quantity</label>
             <input type="number" name="quantity" value="" min="0" id="quantity" class="form-control form-control input-color " required>
-            <div class="text-danger" style="font-size: 0.8rem;">
+            <div class="text-danger" id="quantityErr" style="font-size: 0.8rem;">
 
             </div>
         </div>
@@ -54,13 +61,15 @@ $categories = $data['data']['categoryRows'];
                     </div>
                 </div>
             </div>
+            <div class="text-danger" id="imgErr" style="font-size: 0.8rem;">
 
+            </div>
         </div>
 
         <div class="col-md-8">
             <label for="desc" class="form-label fw-bold">Short Description</label>
             <textarea name="desc" class="form-control" placeholder="Leave a short description here" value="" id="desc" style="height: 200px" required></textarea>
-            <div class="text-danger" style="font-size: 0.8rem;">
+            <div class="text-danger" id="descErr" style="font-size: 0.8rem;">
 
             </div>
         </div>
@@ -71,7 +80,7 @@ $categories = $data['data']['categoryRows'];
             <div id="editor-container rounded-3">
                 <textarea name="information" id="editor2"></textarea>
             </div>
-            <div class="text-danger" style="font-size: 0.8rem;">
+            <div class="text-danger" id="infoErr" style="font-size: 0.8rem;">
 
             </div>
         </div>
@@ -114,30 +123,5 @@ $categories = $data['data']['categoryRows'];
         fileInput.change(function(e) {
             img.prop('src', URL.createObjectURL(e.target.files[0]));
         });
-    })
-
-
-    //Call Ajax add product when submit
-    $('#add').submit(function(e) {
-        e.preventDefault();
-
-        let form = $('#add')[0];
-        let formData = new FormData(form);
-
-        $.ajax({
-            url: 'http://ct275.test/Ajax/AddProduct/',
-            method: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(data) {
-                console.log('ok')
-                console.log(data)
-            },
-            error: function(req, err) {
-                console.log(err);
-            }
-        })
-
     })
 </script>

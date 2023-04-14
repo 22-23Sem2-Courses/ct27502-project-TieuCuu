@@ -77,7 +77,7 @@ $(function () {
 
 function scrollWin() {
     let position = $('.product-container').position().top;
-    position = position * 0.85;
+    position = position * 0.96;
     window.scrollTo(0, position);
 }
 

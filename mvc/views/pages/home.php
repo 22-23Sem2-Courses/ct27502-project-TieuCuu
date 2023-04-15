@@ -67,9 +67,9 @@
                                         </svg>
                                     </div>
                                     <div class="card-body position-relative">
-                                        <div class="d-flex justify-content-between align-items-center mb-2">
-                                            <h5 class="card-title mb-0"><?php echo $product["ProductName"] ?></h5>
-                                            <span class="fw-bolder"><?php echo "$" . $product["ProductPrice"] ?></span>
+                                        <div class="d-flex justify-content-center align-items-center mb-2">
+                                            <h5 class="card-title mb-1 product-name"><?php echo $product["ProductName"] ?></h5>
+
                                         </div>
                                         <p class="card-text"><?php echo $product["ProductShortDesc"] ?></p>
                                         <div>

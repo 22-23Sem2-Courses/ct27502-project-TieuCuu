@@ -371,7 +371,7 @@
     font-weight: 900;
 }
 
-.product-container .product-name {
+.product-name {
     display: block;
     display: -webkit-box;
     -webkit-line-clamp: 1;

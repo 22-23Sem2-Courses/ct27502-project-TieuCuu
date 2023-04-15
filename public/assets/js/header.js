@@ -15,7 +15,6 @@ $(function () {
 
 //Back to top with smoothly scroll
 $(function () {
-
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('#back-to-top').fadeIn()

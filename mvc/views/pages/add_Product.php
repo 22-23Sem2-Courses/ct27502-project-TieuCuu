@@ -4,27 +4,26 @@ if (isset($data['data']['categoryRows'])) {
     $categories = $data['data']['categoryRows'];
 }
 
-// if (isset($data['errors'])) {
-//     print_r($data['errors']['nameError']);
-// };
+
 ?>
 
+
 <div>
-    <h1 class="mt-4 pb-2 border-bottom">Products Table</h1>
+    <h1 class="mt-4 pb-2 border-bottom">Add Product</h1>
 
     <form action="" id="add" method="POST" enctype="multipart/form-data" class="row g-3">
         <div class="col-md-3">
             <label for="name" class="form-label fw-bold">Name</label>
-            <input type="text" name="name" value="" id="name" class="form-control form-control input-color " required>
-            <div class="text-danger" id="nameErr" style="font-size: 0.8rem;">
-                <?php echo $data['errors']['nameError'] ?? "" ?>
+            <input type="text" name="name" value="<?php echo $_POST["name"] ?? "" ?>" id="name" class="form-control form-control input-color " required>
+            <div class="text-danger" id="nameErr" style="font-size: 0.8rem; ">
+                <?php echo $data['errors']['nameErr'] ?? "" ?>
             </div>
         </div>
         <div class="col-md-3">
             <label for="price" class="form-label fw-bold">Price</label>
-            <input type="number" name="price" value="" id="price" min="0" step="0.01" class="form-control form-control input-color " required>
+            <input type="number" name="price" value="<?php echo $_POST["price"] ?? "" ?>" id="price" min="0" step="0.01" class="form-control form-control input-color " required>
             <div class="text-danger" id="priceErr" style="font-size: 0.8rem;">
-
+                <?php echo $data['errors']['priceErr'] ?? "" ?>
             </div>
         </div>
         <div class="col-md-3">
@@ -33,19 +32,20 @@ if (isset($data['data']['categoryRows'])) {
                 <?php
                 foreach ($categories as $category) {
                 ?>
-                    <option value="<?php echo $category['CATEGORYID'] ?>"><?php echo $category['CATEGORYNAME'] ?></option>
+                    <option <?php if (isset($_POST["category"]) && $_POST["category"] == $category['CATEGORYID']) echo "selected"; ?> value="<?php echo $category['CATEGORYID'] ?>"><?php echo $category['CATEGORYNAME'] ?></option>
                 <?php } ?>
             </select>
-            <input type="text" name="category" value="<?php echo $categories[0]['CATEGORYID'] ?>" id="category" class="form-control form-control input-color " required>
+            <input type="text" name="category" value="<?php if (isset($_POST["category"])) echo $_POST["category"];
+                                                        else echo $categories[0]['CATEGORYID']; ?>" id="category" class="form-control form-control input-color " required>
             <div class="text-danger" id="cateErr" style="font-size: 0.8rem;">
-
+                <?php echo $data['errors']['cateErr'] ?? "" ?>
             </div>
         </div>
         <div class="col-md-3">
             <label for="quantity" class="form-label fw-bold">Quantity</label>
-            <input type="number" name="quantity" value="" min="0" id="quantity" class="form-control form-control input-color " required>
+            <input type="number" name="quantity" value="<?php echo $_POST["quantity"] ?? "" ?>" min="0" id="quantity" class="form-control form-control input-color " required>
             <div class="text-danger" id="quantityErr" style="font-size: 0.8rem;">
-
+                <?php echo $data['errors']['quantityErr'] ?? "" ?>
             </div>
         </div>
         <div class="col-md-4">
@@ -61,16 +61,22 @@ if (isset($data['data']['categoryRows'])) {
                     </div>
                 </div>
             </div>
-            <div class="text-danger" id="imgErr" style="font-size: 0.8rem;">
-
+            <div class="text-danger text-center mt-2" id="imgErr" style="font-size: 0.8rem;">
+                <?php echo $data['errors']['imgErr'] ?? "" ?>
             </div>
+            <!-- Show toast msg when upload having error -->
+            <?php
+            if (isset($data['toastImgErr'])) {
+                print_r(stackMessageWrapper($data['toastImgErr']));
+            };
+            ?>
         </div>
 
         <div class="col-md-8">
             <label for="desc" class="form-label fw-bold">Short Description</label>
-            <textarea name="desc" class="form-control" placeholder="Leave a short description here" value="" id="desc" style="height: 200px" required></textarea>
+            <textarea name="desc" class="form-control" placeholder="Leave a short description here" id="desc" style="height: 200px" required><?php echo $_POST["desc"] ?? "" ?></textarea>
             <div class="text-danger" id="descErr" style="font-size: 0.8rem;">
-
+                <?php echo $data['errors']['descErr'] ?? "" ?>
             </div>
         </div>
 
@@ -78,10 +84,10 @@ if (isset($data['data']['categoryRows'])) {
             <label for="confirmPassword" class="form-label fw-bold">Detail Information</label>
             <!-- Editor -->
             <div id="editor-container rounded-3">
-                <textarea name="information" id="editor2"></textarea>
+                <textarea name="information" id="editor2"><?php echo $_POST["information"] ?? "" ?></textarea>
             </div>
             <div class="text-danger" id="infoErr" style="font-size: 0.8rem;">
-
+                <?php echo $data['errors']['infoErr'] ?? "" ?>
             </div>
         </div>
 
@@ -125,3 +131,19 @@ if (isset($data['data']['categoryRows'])) {
         });
     })
 </script>
+
+<?php
+if (isset($data["msgResult"])) {
+    if ($data["msgResult"]["isSuccess"]) {
+        echo $data["msgResult"]["msg"];
+        echo '<script>
+        setTimeout(function() {
+            window.location.replace("http://ct275.test/Admin");
+        }, 1000);
+            </script>';
+        exit;
+    } else {
+        echo $data["msgResult"]["msg"];
+    }
+};
+?>

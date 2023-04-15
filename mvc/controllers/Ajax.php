@@ -238,7 +238,7 @@ class Ajax extends Controller
                     $targetFile = $targetDir . basename($_FILES["fileUpload"]["name"]);
                     $hasErrors = false;
 
-                    var_dump(basename($_FILES["fileUpload"]["name"]));
+                    //var_dump(basename($_FILES["fileUpload"]["name"]));
                     //pathinfo return file path .jpg, .png
                     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
                     $extensions = array("jpeg", "jpg", "png", "gif");
@@ -254,8 +254,6 @@ class Ajax extends Controller
                     if (file_exists($targetFile)) {
                         array_push($errors, showMessage("error", "Sorry, file already exists."));
                         $hasErrors = true;
-                    } else {
-                        echo "file ok";
                     }
 
                     // Check file size
@@ -290,7 +288,7 @@ class Ajax extends Controller
                                         PRODUCTINFO = ?, 
                                         PRODUCTIMG = ? WHERE PRODUCTID = ?", [$name, $price, $category, $quantity, $desc, $info, $img, $productID]);
                 if ($editResult) {
-                    echo stackMessageWrapper([showMessage("success", "Update successful! The changes have been saved to the database.")]);
+                    echo stackMessageWrapper([showMessage("success", "Product updated successfully!")]);
                 } else {
                     if (empty($errors)) {
                         echo stackMessageWrapper([showMessage("info", "Nothing was changed. Please make some changes and try again.")]);

@@ -202,6 +202,7 @@ class Ajax extends Controller
 
                 $errors = [];
 
+
                 if (!empty($_POST["name"])) {
                     $name = $_POST["name"];
                 }
@@ -247,12 +248,6 @@ class Ajax extends Controller
                     $check = getimagesize($_FILES["fileUpload"]["tmp_name"]);
                     if ($check === false) {
                         array_push($errors, showMessage("error", "File is not an image."));
-                        $hasErrors = true;
-                    }
-
-                    // Check if file already exists
-                    if (file_exists($targetFile)) {
-                        array_push($errors, showMessage("error", "Sorry, file already exists."));
                         $hasErrors = true;
                     }
 

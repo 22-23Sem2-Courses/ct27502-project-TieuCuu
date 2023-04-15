@@ -204,7 +204,11 @@ class Ajax extends Controller
 
 
                 if (!empty($_POST["name"])) {
-                    $name = $_POST["name"];
+                    if (strlen($_POST["name"]) >= 25) {
+                        $name = $_POST["name"];
+                    } else {
+                        array_push($errors, showMessage("error", "Name field at least 25 characters long!"));
+                    }
                 }
 
                 if (!empty($_POST["price"])) {
@@ -221,11 +225,19 @@ class Ajax extends Controller
                 }
 
                 if (!empty($_POST["desc"])) {
-                    $desc = $_POST["desc"];
+                    if (strlen($_POST["desc"]) >= 100) {
+                        $desc = $_POST["desc"];
+                    } else {
+                        array_push($errors, showMessage("error", "Description field at least 100 characters long!"));
+                    }
                 }
 
                 if (!empty($_POST["information"])) {
-                    $info = $_POST["information"];
+                    if (strlen($_POST["information"]) >= 500) {
+                        $info = $_POST["information"];
+                    } else {
+                        array_push($errors, showMessage("error", "Detail Information field at least 500 characters long!"));
+                    }
                 }
 
 

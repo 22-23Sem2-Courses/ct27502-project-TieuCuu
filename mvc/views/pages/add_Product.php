@@ -36,7 +36,7 @@ if (isset($data['data']['categoryRows'])) {
                 <?php } ?>
             </select>
             <input type="text" name="category" value="<?php if (isset($_POST["category"])) echo $_POST["category"];
-                                                        else echo $categories[0]['CATEGORYID']; ?>" id="category" class="form-control form-control input-color " required>
+                                                        else echo $categories[0]['CATEGORYID']; ?>" id="category" class="form-control form-control input-color d-none" required>
             <div class="text-danger" id="cateErr" style="font-size: 0.8rem;">
                 <?php echo $data['errors']['cateErr'] ?? "" ?>
             </div>
@@ -138,8 +138,8 @@ if (isset($data["msgResult"])) {
         echo $data["msgResult"]["msg"];
         echo '<script>
         setTimeout(function() {
-            window.location.replace("http://ct275.test/Admin");
-        }, 1000);
+            window.location.assign("http://ct275.test/Admin/NewProduct");
+        }, 2000);
             </script>';
         exit;
     } else {

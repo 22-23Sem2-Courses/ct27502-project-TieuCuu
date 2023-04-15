@@ -95,6 +95,11 @@
                                             <option>District / Town</option>
                                         </select>
                                     </div>
+                                    <div class="col-auto">
+                                        <select id="ward" name="ward" class="form-select form-select-sm" required="">
+                                            <option>Wards</option>
+                                        </select>
+                                    </div>
                                     <input class="billing_address_1" name="" type="hidden" value="">
                                     <input class="billing_address_2" name="" type="hidden" value="">
                                 </form>

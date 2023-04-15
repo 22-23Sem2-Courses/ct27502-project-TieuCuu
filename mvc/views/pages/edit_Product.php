@@ -29,14 +29,14 @@ if (empty($data["data"]["resultError"])) {
     <form action="" id="edit" method="POST" enctype="multipart/form-data" class="row g-3">
         <div class="col-md-3">
             <label for="name" class="form-label fw-bold">Name</label>
-            <input type="text" name="name" value="<?php echo $ProductName ?? $nameErr = 'Error' ?>" id="name" class="form-control form-control input-color " required>
+            <input type="text" name="name" value="<?php echo htmlspecialchars($ProductName) ?? $nameErr = 'Error' ?>" id="name" class="form-control form-control input-color " required>
             <div class="text-danger" style="font-size: 0.8rem;">
                 <?php echo $nameErr ?? ''; ?>
             </div>
         </div>
         <div class="col-md-3">
             <label for="price" class="form-label fw-bold">Price</label>
-            <input type="number" name="price" value="<?php echo $ProductPrice ?? $priceErr = 'Error' ?>" id="price" min="0" step="0.01" class="form-control form-control input-color " required>
+            <input type="number" name="price" value="<?php echo htmlspecialchars($ProductPrice) ?? $priceErr = 'Error' ?>" id="price" min="0" step="0.01" class="form-control form-control input-color " required>
             <div class="text-danger" style="font-size: 0.8rem;">
                 <?php echo $priceErr ?? ''; ?>
             </div>
@@ -47,17 +47,17 @@ if (empty($data["data"]["resultError"])) {
                 <?php
                 foreach ($categories as $category) {
                 ?>
-                    <option <?php echo $category['CATEGORYID'] == $CategoryID ? 'selected' : '' ?> value="<?php echo $category['CATEGORYID'] ?>"><?php echo $category['CATEGORYNAME'] ?></option>
+                    <option <?php echo $category['CATEGORYID'] == $CategoryID ? 'selected' : '' ?> value="<?php echo htmlspecialchars($category['CATEGORYID']) ?>"><?php echo htmlspecialchars($category['CATEGORYNAME']) ?></option>
                 <?php } ?>
             </select>
-            <input type="text" name="category" value="<?php echo $CategoryID ?? $categoryErr = 'Error' ?>" id="category" class="form-control form-control input-color d-none" required>
+            <input type="text" name="category" value="<?php echo htmlspecialchars($CategoryID) ?? $categoryErr = 'Error' ?>" id="category" class="form-control form-control input-color d-none" required>
             <div class="text-danger" style="font-size: 0.8rem;">
                 <?php echo $categoryErr ?? ''; ?>
             </div>
         </div>
         <div class="col-md-3">
             <label for="quantity" class="form-label fw-bold">Quantity</label>
-            <input type="number" name="quantity" value="<?php echo $ProductQuantity ?? $quantityErr = 'Error' ?>" min="0" id="quantity" class="form-control form-control input-color " required>
+            <input type="number" name="quantity" value="<?php echo htmlspecialchars($ProductQuantity) ?? $quantityErr = 'Error' ?>" min="0" id="quantity" class="form-control form-control input-color " required>
             <div class="text-danger" style="font-size: 0.8rem;">
                 <?php echo $quantityErr ?? ''; ?>
             </div>
@@ -80,7 +80,7 @@ if (empty($data["data"]["resultError"])) {
 
         <div class="col-md-8">
             <label for="desc" class="form-label fw-bold">Short Description</label>
-            <textarea name="desc" class="form-control" placeholder="Leave a short description here" value="" id="desc" style="height: 200px" required><?php echo $ProductShortDesc ?? $descErr = "Error" ?></textarea>
+            <textarea name="desc" class="form-control" placeholder="Leave a short description here" value="" id="desc" style="height: 200px" required><?php echo htmlspecialchars($ProductShortDesc) ?? $descErr = "Error" ?></textarea>
             <div class="text-danger" style="font-size: 0.8rem;">
                 <?php echo $descErr ?? ''; ?>
             </div>
@@ -90,7 +90,7 @@ if (empty($data["data"]["resultError"])) {
             <label for="confirmPassword" class="form-label fw-bold">Detail Information</label>
             <!-- Editor -->
             <div id="editor-container rounded-3">
-                <textarea name="information" id="editor" required><?php echo $ProductInfo ?? $informationErr = "Error" ?></textarea>
+                <textarea name="information" id="editor" required><?php echo htmlspecialchars_decode($ProductInfo) ?? $informationErr = "Error" ?></textarea>
             </div>
             <div class="text-danger" style="font-size: 0.8rem;">
                 <?php echo $informationErr ?? ''; ?>

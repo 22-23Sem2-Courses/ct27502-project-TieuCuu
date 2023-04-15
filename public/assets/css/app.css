@@ -587,6 +587,11 @@
     font-weight: 500;
 }
 
+.product__detail-desc {
+    word-wrap: break-word;
+    text-align: justify;
+}
+
 .product__review-container {
     background-color: #eee;
 }
@@ -594,6 +599,8 @@
 .product__content-info .product__editor-wrap {
     font-size: 0.875rem;
     font-family: Helvetica, sans-serif;
+    word-wrap: break-word;
+    text-align: justify;
 }
 
 .product__review-wrap {

@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-7">
                     <div class="product__detail-info">
-                        <h1 class="product__detail-title mb-0"><?php echo $data["data"][0]->ProductName; ?></h1>
+                        <h1 class="product__detail-title mb-0"><?php echo htmlspecialchars($data["data"][0]->ProductName); ?></h1>
                         <div class="d-flex align-items-center">
                             <div class="product__rating-block pe-3 py-3">
                                 <div class="product__rating-icon">
@@ -78,8 +78,8 @@
                             <div class="product__detail-boxprice d-flex align-items-center mb-4">
                                 <h4 class="me-3">Price:</h4>
                                 <div class="d-flex align-items-center justify-content-around">
-                                    <strong><?php echo "$" . round($data["data"][0]->ProductPrice, 1); ?></strong>
-                                    <span><?php echo "$" . intval($data["data"][0]->ProductPrice * 1.5); ?></span>
+                                    <strong><?php echo "$" . htmlspecialchars(round($data["data"][0]->ProductPrice, 1)); ?></strong>
+                                    <span><?php echo "$" . htmlspecialchars(intval($data["data"][0]->ProductPrice * 1.5)); ?></span>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mb-4">
@@ -106,7 +106,7 @@
                             </div>
                             <div class="d-flex align-items-center mb-4">
                                 <h4 class="me-3">Quantity:</h4>
-                                <input name="quantity" class="shadow-none" type="number" value="1" min="1" max="<?php echo $data["data"][0]->ProductQuantity; ?>" <?php if ($data["data"][0]->ProductQuantity == 0) echo 'disabled' ?> step="1" />
+                                <input name="quantity" class="shadow-none" type="number" value="1" min="1" max="<?php echo htmlspecialchars($data["data"][0]->ProductQuantity); ?>" <?php if ($data["data"][0]->ProductQuantity == 0) echo 'disabled' ?> step="1" />
                             </div>
                             <div class="d-flex align-items-center">
                                 <button class="btn dark-green-btn dark-green-btn--lg dark-green-btn--option shadow-none rounded-1 me-3">

@@ -10,7 +10,7 @@ Học kỳ 2, Năm học 2022-2023
 
 **Tên dự án**: Website thương mại điện tử bán các loại rau củ, trái cây, thịt, sản phẩm bơ sữa, nước giải khát.
 <p align="center">
-    ![image info](./Images/home.png)
+    <img src="./Images/home.png">  
 </p>
 
 

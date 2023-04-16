@@ -1,7 +1,5 @@
 <?php
 
-use Dotenv\Parser\Value;
-
 class Admin extends Controller
 {
     public $ProductModel;

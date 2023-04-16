@@ -24,7 +24,7 @@ if (empty($data["data"]["resultError"])) {
 ?>
 
 <div>
-    <h1 class="mt-4 pb-2 border-bottom">Products Table</h1>
+    <h1 class="mt-4 pb-2 border-bottom">Edit Product</h1>
 
     <form action="" id="edit" method="POST" enctype="multipart/form-data" class="row g-3">
         <div class="col-md-3">

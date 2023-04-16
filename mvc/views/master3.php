@@ -90,8 +90,8 @@ if (!checkAdminLogin()) {
 
                     </nav>
                 </div>
-                <div id="layoutSidenav_content">
-                    <main>
+                <div id="layoutSidenav_content" style="background-color: #212529;">
+                    <main style="background-color: #fff;">
                         <div class="container-fluid px-4">
                             <?php require_once "../mvc/views/pages/" . $data["page"] . ".php" ?>
                         </div>
